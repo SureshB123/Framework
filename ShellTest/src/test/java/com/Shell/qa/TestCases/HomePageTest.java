@@ -47,7 +47,7 @@ public class HomePageTest extends TestBase {
 	}
 	
 	
-	//Here we will write my test cases
+	//Here we will write my tests
 	
 	@Test(priority=0, description="Validating Company Name on Home Page")
 	

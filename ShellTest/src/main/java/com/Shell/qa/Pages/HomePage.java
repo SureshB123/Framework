@@ -48,6 +48,7 @@ public class HomePage extends TestBase {
 	
 	//Actions on HomePage
 	
+	
 	public boolean ValidateCompanyName() {
 		return HomePage_CompanyName.isDisplayed();
 	}
