@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="11" failed="1" total="12" passed="0">
+  <reporter-output>
+  </reporter-output>
+  <suite name="AutomationSuite" duration-ms="4482" started-at="2019-09-07T16:23:52Z" finished-at="2019-09-07T16:23:57Z">
+    <groups>
+    </groups>
+    <test name="LoginTest" duration-ms="3579" started-at="2019-09-07T16:23:52Z" finished-at="2019-09-07T16:23:56Z">
+      <class name="com.Shell.qa.TestCases.LoginPageTest">
+        <test-method status="PASS" signature="setExtent()[pri:0, instance:com.Shell.qa.TestCases.LoginPageTest@1139b2f3]" name="setExtent" is-config="true" duration-ms="361" started-at="2019-09-07T21:53:52Z" finished-at="2019-09-07T21:53:52Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setExtent -->
+        <test-method status="PASS" signature="CheckRunMode()[pri:0, instance:com.Shell.qa.TestCases.LoginPageTest@1139b2f3]" name="CheckRunMode" is-config="true" duration-ms="18" started-at="2019-09-07T21:53:52Z" finished-at="2019-09-07T21:53:52Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CheckRunMode -->
+        <test-method status="PASS" signature="SetUp()[pri:0, instance:com.Shell.qa.TestCases.LoginPageTest@1139b2f3]" name="SetUp" is-config="true" duration-ms="3027" started-at="2019-09-07T21:53:52Z" finished-at="2019-09-07T21:53:55Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SetUp -->
+        <test-method status="FAIL" signature="ValidateLoginPage()[pri:0, instance:com.Shell.qa.TestCases.LoginPageTest@1139b2f3]" name="ValidateLoginPage" duration-ms="26" started-at="2019-09-07T21:53:55Z" description="Validating Login page is getting displayed" finished-at="2019-09-07T21:53:56Z">
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at com.sun.proxy.$Proxy13.isDisplayed(Unknown Source)
+	at com.Shell.qa.Pages.LoginPage.validateLoginPage(LoginPage.java:34)
+	at com.Shell.qa.TestCases.LoginPageTest.ValidateLoginPage(LoginPageTest.java:57)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1198)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1123)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ValidateLoginPage -->
+        <test-method status="FAIL" signature="QuitBrowser(org.testng.ITestResult)[pri:0, instance:com.Shell.qa.TestCases.LoginPageTest@1139b2f3]" name="QuitBrowser" is-config="true" duration-ms="0" started-at="2019-09-07T21:53:56Z" finished-at="2019-09-07T21:53:56Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=ValidateLoginPage status=FAILURE method=LoginPageTest.ValidateLoginPage()[pri:0, instance:com.Shell.qa.TestCases.LoginPageTest@1139b2f3] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+	at com.Shell.qa.Utility.TestUtil.getScreenshot(TestUtil.java:25)
+	at com.Shell.qa.Base.TestBase.QuitBrowser(TestBase.java:133)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:564)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:213)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:786)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1198)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1123)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- QuitBrowser -->
+        <test-method status="SKIP" signature="SetUp()[pri:0, instance:com.Shell.qa.TestCases.LoginPageTest@1139b2f3]" name="SetUp" is-config="true" duration-ms="0" started-at="2019-09-07T21:53:56Z" finished-at="2019-09-07T21:53:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SetUp -->
+        <test-method status="SKIP" signature="ValidateLoginPage()[pri:0, instance:com.Shell.qa.TestCases.LoginPageTest@1139b2f3]" name="ValidateLoginPage" duration-ms="11" started-at="2019-09-07T21:53:56Z" description="Validating Login page is getting displayed" finished-at="2019-09-07T21:53:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ValidateLoginPage -->
+        <test-method status="SKIP" signature="QuitBrowser(org.testng.ITestResult)[pri:0, instance:com.Shell.qa.TestCases.LoginPageTest@1139b2f3]" name="QuitBrowser" is-config="true" duration-ms="0" started-at="2019-09-07T21:53:56Z" finished-at="2019-09-07T21:53:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- QuitBrowser -->
+        <test-method status="SKIP" signature="SetUp()[pri:0, instance:com.Shell.qa.TestCases.LoginPageTest@1139b2f3]" name="SetUp" is-config="true" duration-ms="0" started-at="2019-09-07T21:53:56Z" finished-at="2019-09-07T21:53:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SetUp -->
+        <test-method status="SKIP" signature="LoginTest(java.util.Hashtable)[pri:0, instance:com.Shell.qa.TestCases.LoginPageTest@1139b2f3]" name="LoginTest" duration-ms="6" started-at="2019-09-07T21:53:56Z" description="Validating after Login, Home page is displayed" data-provider="getData" finished-at="2019-09-07T21:53:56Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{Password=HiP3rf0rm@ncefuel, UserName=AutomationSinglePayerSingleAccount}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginTest -->
+        <test-method status="SKIP" signature="QuitBrowser(org.testng.ITestResult)[pri:0, instance:com.Shell.qa.TestCases.LoginPageTest@1139b2f3]" name="QuitBrowser" is-config="true" duration-ms="0" started-at="2019-09-07T21:53:56Z" finished-at="2019-09-07T21:53:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- QuitBrowser -->
+        <test-method status="SKIP" signature="SetUp()[pri:0, instance:com.Shell.qa.TestCases.LoginPageTest@1139b2f3]" name="SetUp" is-config="true" duration-ms="0" started-at="2019-09-07T21:53:56Z" finished-at="2019-09-07T21:53:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SetUp -->
+        <test-method status="SKIP" signature="LoginTest(java.util.Hashtable)[pri:0, instance:com.Shell.qa.TestCases.LoginPageTest@1139b2f3]" name="LoginTest" duration-ms="3" started-at="2019-09-07T21:53:56Z" description="Validating after Login, Home page is displayed" data-provider="getData" finished-at="2019-09-07T21:53:56Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{Password=HiP3rf0rm@ncefuel, UserName=AutomationSinglePayerSingleAccount}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginTest -->
+        <test-method status="SKIP" signature="QuitBrowser(org.testng.ITestResult)[pri:0, instance:com.Shell.qa.TestCases.LoginPageTest@1139b2f3]" name="QuitBrowser" is-config="true" duration-ms="0" started-at="2019-09-07T21:53:56Z" finished-at="2019-09-07T21:53:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- QuitBrowser -->
+        <test-method status="SKIP" signature="endReport()[pri:0, instance:com.Shell.qa.TestCases.LoginPageTest@1139b2f3]" name="endReport" is-config="true" duration-ms="0" started-at="2019-09-07T21:53:56Z" finished-at="2019-09-07T21:53:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- endReport -->
+      </class> <!-- com.Shell.qa.TestCases.LoginPageTest -->
+    </test> <!-- LoginTest -->
+    <test name="HomePageTest" duration-ms="843" started-at="2019-09-07T16:23:56Z" finished-at="2019-09-07T16:23:57Z">
+      <class name="com.Shell.qa.TestCases.HomePageTest">
+        <test-method status="PASS" signature="setExtent()[pri:0, instance:com.Shell.qa.TestCases.HomePageTest@498d318c]" name="setExtent" is-config="true" duration-ms="28" started-at="2019-09-07T21:53:56Z" finished-at="2019-09-07T21:53:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setExtent -->
+        <test-method status="PASS" signature="CheckRunMode()[pri:0, instance:com.Shell.qa.TestCases.HomePageTest@498d318c]" name="CheckRunMode" is-config="true" duration-ms="2" started-at="2019-09-07T21:53:56Z" finished-at="2019-09-07T21:53:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CheckRunMode -->
+        <test-method status="FAIL" signature="SetUp()[pri:0, instance:com.Shell.qa.TestCases.HomePageTest@498d318c]" name="SetUp" is-config="true" duration-ms="0" started-at="2019-09-07T21:53:56Z" finished-at="2019-09-07T21:53:56Z">
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at com.sun.proxy.$Proxy13.sendKeys(Unknown Source)
+	at com.Shell.qa.Pages.LoginPage.Login(LoginPage.java:42)
+	at com.Shell.qa.TestCases.HomePageTest.SetUp(HomePageTest.java:45)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:564)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:213)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:653)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1198)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1123)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SetUp -->
+        <test-method status="SKIP" signature="ValidateHomePage()[pri:0, instance:com.Shell.qa.TestCases.HomePageTest@498d318c]" name="ValidateHomePage" duration-ms="1" started-at="2019-09-07T21:53:56Z" description="Validating Company Name on Home Page" finished-at="2019-09-07T21:53:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ValidateHomePage -->
+        <test-method status="SKIP" signature="QuitBrowser(org.testng.ITestResult)[pri:0, instance:com.Shell.qa.TestCases.HomePageTest@498d318c]" name="QuitBrowser" is-config="true" duration-ms="0" started-at="2019-09-07T21:53:56Z" finished-at="2019-09-07T21:53:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- QuitBrowser -->
+        <test-method status="SKIP" signature="SetUp()[pri:0, instance:com.Shell.qa.TestCases.HomePageTest@498d318c]" name="SetUp" is-config="true" duration-ms="0" started-at="2019-09-07T21:53:56Z" finished-at="2019-09-07T21:53:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SetUp -->
+        <test-method status="SKIP" signature="ValidateOrderaCardLink()[pri:0, instance:com.Shell.qa.TestCases.HomePageTest@498d318c]" name="ValidateOrderaCardLink" duration-ms="2" started-at="2019-09-07T21:53:56Z" description="Validating &#039;Order a Card&#039; link on Home Page" finished-at="2019-09-07T21:53:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ValidateOrderaCardLink -->
+        <test-method status="SKIP" signature="QuitBrowser(org.testng.ITestResult)[pri:0, instance:com.Shell.qa.TestCases.HomePageTest@498d318c]" name="QuitBrowser" is-config="true" duration-ms="0" started-at="2019-09-07T21:53:56Z" finished-at="2019-09-07T21:53:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- QuitBrowser -->
+        <test-method status="SKIP" signature="SetUp()[pri:0, instance:com.Shell.qa.TestCases.HomePageTest@498d318c]" name="SetUp" is-config="true" duration-ms="0" started-at="2019-09-07T21:53:56Z" finished-at="2019-09-07T21:53:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SetUp -->
+        <test-method status="SKIP" signature="ValidateBlockCardLink()[pri:0, instance:com.Shell.qa.TestCases.HomePageTest@498d318c]" name="ValidateBlockCardLink" duration-ms="1" started-at="2019-09-07T21:53:56Z" description="Validating &#039;Block card&#039; link on Home Page" finished-at="2019-09-07T21:53:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ValidateBlockCardLink -->
+        <test-method status="SKIP" signature="QuitBrowser(org.testng.ITestResult)[pri:0, instance:com.Shell.qa.TestCases.HomePageTest@498d318c]" name="QuitBrowser" is-config="true" duration-ms="0" started-at="2019-09-07T21:53:56Z" finished-at="2019-09-07T21:53:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- QuitBrowser -->
+        <test-method status="SKIP" signature="SetUp()[pri:0, instance:com.Shell.qa.TestCases.HomePageTest@498d318c]" name="SetUp" is-config="true" duration-ms="0" started-at="2019-09-07T21:53:56Z" finished-at="2019-09-07T21:53:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SetUp -->
+        <test-method status="SKIP" signature="ValidateCancelCardLink()[pri:0, instance:com.Shell.qa.TestCases.HomePageTest@498d318c]" name="ValidateCancelCardLink" duration-ms="1" started-at="2019-09-07T21:53:56Z" description="Validating &#039;Cancel Card&#039; link on Home Page" finished-at="2019-09-07T21:53:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ValidateCancelCardLink -->
+        <test-method status="SKIP" signature="QuitBrowser(org.testng.ITestResult)[pri:0, instance:com.Shell.qa.TestCases.HomePageTest@498d318c]" name="QuitBrowser" is-config="true" duration-ms="0" started-at="2019-09-07T21:53:56Z" finished-at="2019-09-07T21:53:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- QuitBrowser -->
+        <test-method status="SKIP" signature="SetUp()[pri:0, instance:com.Shell.qa.TestCases.HomePageTest@498d318c]" name="SetUp" is-config="true" duration-ms="0" started-at="2019-09-07T21:53:56Z" finished-at="2019-09-07T21:53:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SetUp -->
+        <test-method status="SKIP" signature="ValidateCardActivityLink()[pri:0, instance:com.Shell.qa.TestCases.HomePageTest@498d318c]" name="ValidateCardActivityLink" duration-ms="2" started-at="2019-09-07T21:53:57Z" description="Validating &#039;Card Activity&#039; link on Home Page" finished-at="2019-09-07T21:53:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ValidateCardActivityLink -->
+        <test-method status="SKIP" signature="QuitBrowser(org.testng.ITestResult)[pri:0, instance:com.Shell.qa.TestCases.HomePageTest@498d318c]" name="QuitBrowser" is-config="true" duration-ms="0" started-at="2019-09-07T21:53:57Z" finished-at="2019-09-07T21:53:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- QuitBrowser -->
+        <test-method status="SKIP" signature="SetUp()[pri:0, instance:com.Shell.qa.TestCases.HomePageTest@498d318c]" name="SetUp" is-config="true" duration-ms="0" started-at="2019-09-07T21:53:57Z" finished-at="2019-09-07T21:53:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SetUp -->
+        <test-method status="SKIP" signature="ValidateCardsLink()[pri:0, instance:com.Shell.qa.TestCases.HomePageTest@498d318c]" name="ValidateCardsLink" duration-ms="2" started-at="2019-09-07T21:53:57Z" description="Validating &#039;Cards&#039; link on Home Page" finished-at="2019-09-07T21:53:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ValidateCardsLink -->
+        <test-method status="SKIP" signature="QuitBrowser(org.testng.ITestResult)[pri:0, instance:com.Shell.qa.TestCases.HomePageTest@498d318c]" name="QuitBrowser" is-config="true" duration-ms="0" started-at="2019-09-07T21:53:57Z" finished-at="2019-09-07T21:53:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- QuitBrowser -->
+        <test-method status="SKIP" signature="SetUp()[pri:0, instance:com.Shell.qa.TestCases.HomePageTest@498d318c]" name="SetUp" is-config="true" duration-ms="0" started-at="2019-09-07T21:53:57Z" finished-at="2019-09-07T21:53:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SetUp -->
+        <test-method status="SKIP" signature="ValidateFinanceLink()[pri:0, instance:com.Shell.qa.TestCases.HomePageTest@498d318c]" name="ValidateFinanceLink" duration-ms="7" started-at="2019-09-07T21:53:57Z" description="Validating &#039;Finance&#039; link on Home Page" finished-at="2019-09-07T21:53:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ValidateFinanceLink -->
+        <test-method status="SKIP" signature="QuitBrowser(org.testng.ITestResult)[pri:0, instance:com.Shell.qa.TestCases.HomePageTest@498d318c]" name="QuitBrowser" is-config="true" duration-ms="0" started-at="2019-09-07T21:53:57Z" finished-at="2019-09-07T21:53:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- QuitBrowser -->
+        <test-method status="SKIP" signature="SetUp()[pri:0, instance:com.Shell.qa.TestCases.HomePageTest@498d318c]" name="SetUp" is-config="true" duration-ms="0" started-at="2019-09-07T21:53:57Z" finished-at="2019-09-07T21:53:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SetUp -->
+        <test-method status="SKIP" signature="HomeTest()[pri:0, instance:com.Shell.qa.TestCases.HomePageTest@498d318c]" name="HomeTest" duration-ms="2" started-at="2019-09-07T21:53:57Z" description="Validating after clicking cards from Home Page, Cards page is displayed" finished-at="2019-09-07T21:53:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- HomeTest -->
+        <test-method status="SKIP" signature="QuitBrowser(org.testng.ITestResult)[pri:0, instance:com.Shell.qa.TestCases.HomePageTest@498d318c]" name="QuitBrowser" is-config="true" duration-ms="0" started-at="2019-09-07T21:53:57Z" finished-at="2019-09-07T21:53:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- QuitBrowser -->
+        <test-method status="SKIP" signature="endReport()[pri:0, instance:com.Shell.qa.TestCases.HomePageTest@498d318c]" name="endReport" is-config="true" duration-ms="0" started-at="2019-09-07T21:53:57Z" finished-at="2019-09-07T21:53:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- endReport -->
+      </class> <!-- com.Shell.qa.TestCases.HomePageTest -->
+    </test> <!-- HomePageTest -->
+  </suite> <!-- AutomationSuite -->
+</testng-results>

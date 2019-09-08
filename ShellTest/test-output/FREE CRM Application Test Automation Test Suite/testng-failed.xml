@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [FREE CRM Application Test Automation Test Suite]">
+  <listeners>
+    <listener class-name="com.Shell.qa.ExtentReportListener.ExtentReportListener"/>
+  </listeners>
+  <test name="Free CRM App Test Cases(failed)">
+    <classes>
+      <class name="com.Shell.qa.TestCases.LoginPageTest">
+        <methods>
+          <include name="QuitBrowser"/>
+          <include name="SetUp"/>
+        </methods>
+      </class> <!-- com.Shell.qa.TestCases.LoginPageTest -->
+      <class name="com.Shell.qa.TestCases.HomePageTest">
+        <methods>
+          <include name="SetUp"/>
+          <include name="HomeTest"/>
+          <include name="QuitBrowser"/>
+        </methods>
+      </class> <!-- com.Shell.qa.TestCases.HomePageTest -->
+    </classes>
+  </test> <!-- Free CRM App Test Cases(failed) -->
+</suite> <!-- Failed suite [FREE CRM Application Test Automation Test Suite] -->

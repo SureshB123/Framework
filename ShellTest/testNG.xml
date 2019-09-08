@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="AutomationSuite">
+
+	<listeners>
+		<listener class-name="com.Shell.qa.Utility.TestNGListeners" />
+		<listener class-name="com.Shell.qa.Utility.ExtentReportListener" />
+		<listener class-name="com.Shell.qa.Utility.RetryTransformer" />
+	</listeners>
+	
+	<test name="LoginTest" allow-return-values="true">
+		<classes>
+			<class name="com.Shell.qa.TestCases.LoginPageTest" />
+		</classes>
+	</test>
+
+	<test name="HomePageTest" allow-return-values="true">
+		<classes>
+			<class name="com.Shell.qa.TestCases.HomePageTest" />
+		</classes>
+	</test>
+</suite>

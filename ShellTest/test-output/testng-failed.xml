@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [AutomationSuite]">
+  <listeners>
+    <listener class-name="com.Shell.qa.Utility.TestNGListeners"/>
+    <listener class-name="com.Shell.qa.Utility.ExtentReportListener"/>
+    <listener class-name="com.Shell.qa.Utility.RetryTransformer"/>
+  </listeners>
+  <test name="LoginTest(failed)">
+    <classes>
+      <class name="com.Shell.qa.TestCases.LoginPageTest">
+        <methods>
+          <include name="SetUp"/>
+          <include name="QuitBrowser"/>
+          <include name="setExtent"/>
+          <include name="CheckRunMode"/>
+          <include name="ValidateLoginPage"/>
+          <include name="LoginTest"/>
+        </methods>
+      </class> <!-- com.Shell.qa.TestCases.LoginPageTest -->
+      <class name="com.Shell.qa.TestCases.HomePageTest">
+        <methods>
+          <include name="SetUp"/>
+          <include name="CheckRunMode"/>
+          <include name="setExtent"/>
+        </methods>
+      </class> <!-- com.Shell.qa.TestCases.HomePageTest -->
+    </classes>
+  </test> <!-- LoginTest(failed) -->
+  <test name="HomePageTest(failed)">
+    <classes>
+      <class name="com.Shell.qa.TestCases.LoginPageTest">
+        <methods>
+          <include name="SetUp"/>
+          <include name="QuitBrowser"/>
+          <include name="setExtent"/>
+          <include name="CheckRunMode"/>
+        </methods>
+      </class> <!-- com.Shell.qa.TestCases.LoginPageTest -->
+      <class name="com.Shell.qa.TestCases.HomePageTest">
+        <methods>
+          <include name="SetUp"/>
+          <include name="ValidateCardActivityLink"/>
+          <include name="HomeTest"/>
+          <include name="ValidateCancelCardLink"/>
+          <include name="ValidateCardsLink"/>
+          <include name="CheckRunMode"/>
+          <include name="ValidateFinanceLink"/>
+          <include name="ValidateBlockCardLink"/>
+          <include name="ValidateHomePage"/>
+          <include name="setExtent"/>
+          <include name="ValidateOrderaCardLink"/>
+        </methods>
+      </class> <!-- com.Shell.qa.TestCases.HomePageTest -->
+    </classes>
+  </test> <!-- HomePageTest(failed) -->
+</suite> <!-- Failed suite [AutomationSuite] -->
