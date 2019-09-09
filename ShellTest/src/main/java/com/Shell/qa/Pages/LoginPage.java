@@ -42,7 +42,7 @@ public class LoginPage extends TestBase {
 		userName.sendKeys(un);
 		password.sendKeys(pw);
 		LoginButton.click();
-		Thread.sleep(50000);
+		Thread.sleep(5000);
 		String URL=GetCurrentURL();
 		if(URL.equalsIgnoreCase(prop.getProperty("HomePage_URL"))) {
 			return new HomePage();
