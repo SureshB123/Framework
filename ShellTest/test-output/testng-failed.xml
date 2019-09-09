@@ -1,22 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [AutomationSuite]">
-  <listeners>
-    <listener class-name="com.Shell.qa.Utility.TestNGListeners"/>
-    <listener class-name="com.Shell.qa.Utility.ExtentReportListener"/>
-    <listener class-name="com.Shell.qa.Utility.RetryTransformer"/>
-  </listeners>
-  <test name="HomePageTest(failed)">
+<suite name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
     <classes>
-      <class name="com.Shell.qa.TestCases.TC01_LoginPageTest">
-        <methods>
-          <include name="CheckRunMode"/>
-          <include name="SetUp"/>
-          <include name="QuitBrowser"/>
-          <include name="setExtent"/>
-          <include name="endReport"/>
-        </methods>
-      </class> <!-- com.Shell.qa.TestCases.TC01_LoginPageTest -->
       <class name="com.Shell.qa.TestCases.TC02_HomePageTest">
         <methods>
           <include name="CheckRunMode"/>
@@ -28,5 +14,5 @@
         </methods>
       </class> <!-- com.Shell.qa.TestCases.TC02_HomePageTest -->
     </classes>
-  </test> <!-- HomePageTest(failed) -->
-</suite> <!-- Failed suite [AutomationSuite] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

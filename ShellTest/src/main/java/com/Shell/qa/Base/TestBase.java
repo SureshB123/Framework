@@ -39,8 +39,8 @@ public class TestBase {
 	public static POMXls_Reader xls;
 	
 	//Initializing Extent Report
-	public ExtentReports extent;
-	public ExtentTest extentTest;
+	public static ExtentReports extent;
+	public static ExtentTest extentTest;
 	
 	public String Excel_path=System.getProperty("user.dir")+"//src//main//java//com//Shell//qa//TestData//POMTestDataSheet.xlsx";
 	
