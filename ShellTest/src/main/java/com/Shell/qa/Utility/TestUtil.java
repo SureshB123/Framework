@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 
 public class TestUtil {
 	
-	public static long PageLoadTimeOut=40;
+	public static long PageLoadTimeOut=120;
 	public static long Implicit_Wait=30;
 	public static WebDriver driver;
 
