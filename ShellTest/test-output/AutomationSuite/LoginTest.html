@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>LoginTest</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>0/1/3</td>
+<td>Tests passed/Failed/Skipped:</td><td>1/1/2</td>
 </tr><tr>
-<td>Started on:</td><td>Sat Sep 07 21:53:52 IST 2019</td>
+<td>Started on:</td><td>Mon Sep 09 13:47:38 IST 2019</td>
 </tr>
-<tr><td>Total time:</td><td>3 seconds (3579 ms)</td>
+<tr><td>Total time:</td><td>118 seconds (118843 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,12 +75,14 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.Shell.qa.TestCases.LoginPageTest.QuitBrowser()'><b>QuitBrowser</b><br>Test class: com.Shell.qa.TestCases.LoginPageTest<br>Parameters: [TestResult name=ValidateLoginPage status=FAILURE method=LoginPageTest.ValidateLoginPage()[pri:0, instance:com.Shell.qa.TestCases.LoginPageTest@1139b2f3] output={null}]</td>
-<td><div><pre>java.lang.NullPointerException
+<td title='com.Shell.qa.TestCases.LoginPageTest.QuitBrowser()'><b>QuitBrowser</b><br>Test class: com.Shell.qa.TestCases.LoginPageTest<br>Parameters: [TestResult name=LoginTest status=FAILURE method=LoginPageTest.LoginTest(java.util.Hashtable)[pri:0, instance:com.Shell.qa.TestCases.LoginPageTest@1139b2f3] output={null}]</td>
+<td><div><pre>java.lang.RuntimeException: Unexpected result for screenshot command: null
+	at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:304)
 	at com.Shell.qa.Utility.TestUtil.getScreenshot(TestUtil.java:25)
 	at com.Shell.qa.Base.TestBase.QuitBrowser(TestBase.java:133)
-... Removed 26 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1527152775", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1527152775'><pre>java.lang.NullPointerException
+... Removed 26 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace725832346", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace725832346'><pre>java.lang.RuntimeException: Unexpected result for screenshot command: null
+	at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:304)
 	at com.Shell.qa.Utility.TestUtil.getScreenshot(TestUtil.java:25)
 	at com.Shell.qa.Base.TestBase.QuitBrowser(TestBase.java:133)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -131,16 +133,6 @@ function toggleAllBoxes() {
 <td>0</td>
 <td>com.Shell.qa.TestCases.LoginPageTest@1139b2f3</td></tr>
 <tr>
-<td title='com.Shell.qa.TestCases.LoginPageTest.SetUp()'><b>SetUp</b><br>Test class: com.Shell.qa.TestCases.LoginPageTest</td>
-<td></td>
-<td>0</td>
-<td>com.Shell.qa.TestCases.LoginPageTest@1139b2f3</td></tr>
-<tr>
-<td title='com.Shell.qa.TestCases.LoginPageTest.QuitBrowser()'><b>QuitBrowser</b><br>Test class: com.Shell.qa.TestCases.LoginPageTest</td>
-<td></td>
-<td>0</td>
-<td>com.Shell.qa.TestCases.LoginPageTest@1139b2f3</td></tr>
-<tr>
 <td title='com.Shell.qa.TestCases.LoginPageTest.QuitBrowser()'><b>QuitBrowser</b><br>Test class: com.Shell.qa.TestCases.LoginPageTest</td>
 <td></td>
 <td>0</td>
@@ -164,20 +156,62 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.Shell.qa.TestCases.LoginPageTest.ValidateLoginPage()'><b>ValidateLoginPage</b><br>Test class: com.Shell.qa.TestCases.LoginPageTest<br>Test method: Validating Login page is getting displayed</td>
-<td><div><pre>java.lang.NullPointerException
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at com.sun.proxy.$Proxy13.isDisplayed(Unknown Source)
-	at com.Shell.qa.Pages.LoginPage.validateLoginPage(LoginPage.java:34)
-	at com.Shell.qa.TestCases.LoginPageTest.ValidateLoginPage(LoginPageTest.java:57)
-... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1136005694", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1136005694'><pre>java.lang.NullPointerException
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at com.sun.proxy.$Proxy13.isDisplayed(Unknown Source)
-	at com.Shell.qa.Pages.LoginPage.validateLoginPage(LoginPage.java:34)
-	at com.Shell.qa.TestCases.LoginPageTest.ValidateLoginPage(LoginPageTest.java:57)
+<td title='com.Shell.qa.TestCases.LoginPageTest.LoginTest()'><b>LoginTest</b><br>Test class: com.Shell.qa.TestCases.LoginPageTest<br>Test method: Validating after Login, Home page is displayed<br>Parameters: {Password=HiP3rf0rm@ncefuel, UserName=AutomationSinglePayerSingleAccount}</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: timeout
+  (Session info: chrome=76.0.3809.132)
+  (Driver info: chromedriver=2.35.528161 (5b82f2d2aae0ca24b877009200ced9065a772e73),platform=Windows NT 10.0.17134 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;SHELW42SLPC0883&apos;, ip: &apos;192.168.43.62&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_121&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.35.528161 (5b82f2d2aae0ca..., userDataDir: C:\Users\sb49849.IND\AppDat...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 76.0.3809.132, webStorageEnabled: true}
+Session ID: 39626ce2147c45992b581a0dad42ee56
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:285)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:84)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at com.sun.proxy.$Proxy13.click(Unknown Source)
+	at com.Shell.qa.Pages.LoginPage.Login(LoginPage.java:44)
+	at com.Shell.qa.TestCases.LoginPageTest.LoginTest(LoginPageTest.java:69)
+... Removed 32 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace628392976", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace628392976'><pre>org.openqa.selenium.TimeoutException: timeout
+  (Session info: chrome=76.0.3809.132)
+  (Driver info: chromedriver=2.35.528161 (5b82f2d2aae0ca24b877009200ced9065a772e73),platform=Windows NT 10.0.17134 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;SHELW42SLPC0883&apos;, ip: &apos;192.168.43.62&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_121&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.35.528161 (5b82f2d2aae0ca..., userDataDir: C:\Users\sb49849.IND\AppDat...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 76.0.3809.132, webStorageEnabled: true}
+Session ID: 39626ce2147c45992b581a0dad42ee56
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:285)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:84)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at com.sun.proxy.$Proxy13.click(Unknown Source)
+	at com.Shell.qa.Pages.LoginPage.Login(LoginPage.java:44)
+	at com.Shell.qa.TestCases.LoginPageTest.LoginTest(LoginPageTest.java:69)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -203,6 +237,19 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 </pre></div></td>
+<td>55</td>
+<td>com.Shell.qa.TestCases.LoginPageTest@1139b2f3</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.Shell.qa.TestCases.LoginPageTest.ValidateLoginPage()'><b>ValidateLoginPage</b><br>Test class: com.Shell.qa.TestCases.LoginPageTest<br>Test method: Validating Login page is getting displayed</td>
+<td></td>
 <td>0</td>
 <td>com.Shell.qa.TestCases.LoginPageTest@1139b2f3</td></tr>
 </table><p>
@@ -220,11 +267,6 @@ function toggleAllBoxes() {
 <td>com.Shell.qa.TestCases.LoginPageTest@1139b2f3</td></tr>
 <tr>
 <td title='com.Shell.qa.TestCases.LoginPageTest.LoginTest()'><b>LoginTest</b><br>Test class: com.Shell.qa.TestCases.LoginPageTest<br>Test method: Validating after Login, Home page is displayed<br>Parameters: {Password=HiP3rf0rm@ncefuel, UserName=AutomationSinglePayerSingleAccount}</td>
-<td></td>
-<td>0</td>
-<td>com.Shell.qa.TestCases.LoginPageTest@1139b2f3</td></tr>
-<tr>
-<td title='com.Shell.qa.TestCases.LoginPageTest.ValidateLoginPage()'><b>ValidateLoginPage</b><br>Test class: com.Shell.qa.TestCases.LoginPageTest<br>Test method: Validating Login page is getting displayed</td>
 <td></td>
 <td>0</td>
 <td>com.Shell.qa.TestCases.LoginPageTest@1139b2f3</td></tr>
