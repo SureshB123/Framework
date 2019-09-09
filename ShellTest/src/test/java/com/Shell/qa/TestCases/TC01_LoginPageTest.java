@@ -19,7 +19,7 @@ public class TC01_LoginPageTest extends TestBase {
 	
 	LoginPage loginPage;
 	HomePage homePage;
-	public static String TestCaseName = "TC01_LoginPageTest";
+	String TestCaseName = "TC01_LoginPageTest";
 	
 
 	public TC01_LoginPageTest() {
