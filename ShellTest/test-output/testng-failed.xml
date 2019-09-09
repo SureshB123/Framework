@@ -14,8 +14,7 @@
           <include name="QuitBrowser"/>
           <include name="setExtent"/>
           <include name="CheckRunMode"/>
-          <include name="ValidateLoginPage"/>
-          <include name="LoginTest"/>
+          <include name="LoginTest" invocation-numbers="0"/>
         </methods>
       </class> <!-- com.Shell.qa.TestCases.LoginPageTest -->
       <class name="com.Shell.qa.TestCases.HomePageTest">
