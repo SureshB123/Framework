@@ -8,25 +8,25 @@
   </listeners>
   <test name="HomePageTest(failed)">
     <classes>
-      <class name="com.Shell.qa.TestCases.LoginPageTest">
+      <class name="com.Shell.qa.TestCases.TC01_LoginPageTest">
         <methods>
+          <include name="CheckRunMode"/>
           <include name="SetUp"/>
           <include name="QuitBrowser"/>
           <include name="setExtent"/>
-          <include name="CheckRunMode"/>
           <include name="endReport"/>
         </methods>
-      </class> <!-- com.Shell.qa.TestCases.LoginPageTest -->
-      <class name="com.Shell.qa.TestCases.HomePageTest">
+      </class> <!-- com.Shell.qa.TestCases.TC01_LoginPageTest -->
+      <class name="com.Shell.qa.TestCases.TC02_HomePageTest">
         <methods>
+          <include name="CheckRunMode"/>
           <include name="SetUp"/>
+          <include name="QuitBrowser"/>
           <include name="HomeTest"/>
-          <include name="CheckRunMode"/>
-          <include name="QuitBrowser"/>
           <include name="setExtent"/>
           <include name="endReport"/>
         </methods>
-      </class> <!-- com.Shell.qa.TestCases.HomePageTest -->
+      </class> <!-- com.Shell.qa.TestCases.TC02_HomePageTest -->
     </classes>
   </test> <!-- HomePageTest(failed) -->
 </suite> <!-- Failed suite [AutomationSuite] -->
