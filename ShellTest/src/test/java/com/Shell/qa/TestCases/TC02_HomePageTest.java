@@ -16,15 +16,15 @@ import com.relevantcodes.extentreports.LogStatus;
 
 
 
-public class HomePageTest extends TestBase {
+public class TC02_HomePageTest extends TestBase {
 	
 	
 	HomePage homePage;
 	CardsPage cardsPage;
 	LoginPage loginPage;
-	public String TestCaseName = "HomePageTest";
+	public String TestCaseName = "TC02_HomePageTest";
 	
-	public HomePageTest() {
+	public TC02_HomePageTest() {
 		super();
 	}
 	

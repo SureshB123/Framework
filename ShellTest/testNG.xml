@@ -9,13 +9,13 @@
 	
 	<test name="LoginTest" allow-return-values="true">
 		<classes>
-			<class name="com.Shell.qa.TestCases.LoginPageTest" />
+			<class name="com.Shell.qa.TestCases.TC01_LoginPageTest" />
 		</classes>
 	</test>
 
 	<test name="HomePageTest" allow-return-values="true">
 		<classes>
-			<class name="com.Shell.qa.TestCases.HomePageTest" />
+			<class name="com.Shell.qa.TestCases.TC02_HomePageTest" />
 		</classes>
 	</test>
 </suite>
