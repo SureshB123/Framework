@@ -72,7 +72,7 @@ public class TestBase {
 		try{
 			
 			  if(browserName.equals("Mozilla")){
-				  		System.setProperty("webdriver.firefox.marionette",System.getProperty("user.dir")+"\\Drivers\\geckodriver.exe");
+				  		//System.setProperty("webdriver.firefox.marionette",System.getProperty("user.dir")+"\\Drivers\\geckodriver.exe");
 			    		driver= new FirefoxDriver();
 			  }else if(browserName.equals("chrome")){
 						System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"\\Drivers\\chromedriver.exe");
