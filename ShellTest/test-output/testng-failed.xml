@@ -1,18 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Default suite]">
-  <test name="Default test(failed)">
+<suite name="Failed suite [AutomationSuite]">
+  <listeners>
+    <listener class-name="com.Shell.qa.Utility.TestNGListeners"/>
+    <listener class-name="com.Shell.qa.Utility.ExtentReportListener"/>
+    <listener class-name="com.Shell.qa.Utility.RetryTransformer"/>
+  </listeners>
+  <test name="TC01_LoginPageTest(failed)">
     <classes>
+      <class name="com.Shell.qa.TestCases.TC01_LoginPageTest">
+        <methods>
+          <include name="CheckRunMode"/>
+          <include name="ValidateLoginPage"/>
+          <include name="LoginTest"/>
+          <include name="SetUp"/>
+          <include name="QuitBrowser"/>
+          <include name="setExtent"/>
+        </methods>
+      </class> <!-- com.Shell.qa.TestCases.TC01_LoginPageTest -->
       <class name="com.Shell.qa.TestCases.TC02_HomePageTest">
         <methods>
           <include name="CheckRunMode"/>
           <include name="SetUp"/>
-          <include name="QuitBrowser"/>
-          <include name="HomeTest"/>
           <include name="setExtent"/>
-          <include name="endReport"/>
         </methods>
       </class> <!-- com.Shell.qa.TestCases.TC02_HomePageTest -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- TC01_LoginPageTest(failed) -->
+  <test name="TC02_HomePageTest(failed)">
+    <classes>
+      <class name="com.Shell.qa.TestCases.TC01_LoginPageTest">
+        <methods>
+          <include name="CheckRunMode"/>
+          <include name="SetUp"/>
+          <include name="QuitBrowser"/>
+          <include name="setExtent"/>
+        </methods>
+      </class> <!-- com.Shell.qa.TestCases.TC01_LoginPageTest -->
+      <class name="com.Shell.qa.TestCases.TC02_HomePageTest">
+        <methods>
+          <include name="ValidateFinanceLink"/>
+          <include name="CheckRunMode"/>
+          <include name="ValidateBlockCardLink"/>
+          <include name="SetUp"/>
+          <include name="ValidateCancelCardLink"/>
+          <include name="HomeTest"/>
+          <include name="ValidateCardsLink"/>
+          <include name="ValidateOrderaCardLink"/>
+          <include name="setExtent"/>
+          <include name="ValidateCardActivityLink"/>
+          <include name="ValidateHomePage"/>
+        </methods>
+      </class> <!-- com.Shell.qa.TestCases.TC02_HomePageTest -->
+    </classes>
+  </test> <!-- TC02_HomePageTest(failed) -->
+</suite> <!-- Failed suite [AutomationSuite] -->
