@@ -29,7 +29,7 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class TestBase {
 	
-	//Initialize webdriver
+	//Initialize your webdriver
 	public static WebDriver driver;
 	
 	//Initializing properties file
