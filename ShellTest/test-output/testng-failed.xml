@@ -11,18 +11,20 @@
       <class name="com.Shell.qa.TestCases.TC01_LoginPageTest">
         <methods>
           <include name="CheckRunMode"/>
-          <include name="ValidateLoginPage"/>
-          <include name="LoginTest"/>
+          <include name="LoginTest" invocation-numbers="1"/>
           <include name="SetUp"/>
           <include name="QuitBrowser"/>
           <include name="setExtent"/>
+          <include name="endReport"/>
         </methods>
       </class> <!-- com.Shell.qa.TestCases.TC01_LoginPageTest -->
       <class name="com.Shell.qa.TestCases.TC02_HomePageTest">
         <methods>
           <include name="CheckRunMode"/>
           <include name="SetUp"/>
+          <include name="QuitBrowser"/>
           <include name="setExtent"/>
+          <include name="endReport"/>
         </methods>
       </class> <!-- com.Shell.qa.TestCases.TC02_HomePageTest -->
     </classes>
@@ -35,21 +37,17 @@
           <include name="SetUp"/>
           <include name="QuitBrowser"/>
           <include name="setExtent"/>
+          <include name="endReport"/>
         </methods>
       </class> <!-- com.Shell.qa.TestCases.TC01_LoginPageTest -->
       <class name="com.Shell.qa.TestCases.TC02_HomePageTest">
         <methods>
-          <include name="ValidateFinanceLink"/>
           <include name="CheckRunMode"/>
-          <include name="ValidateBlockCardLink"/>
           <include name="SetUp"/>
-          <include name="ValidateCancelCardLink"/>
+          <include name="QuitBrowser"/>
           <include name="HomeTest"/>
-          <include name="ValidateCardsLink"/>
-          <include name="ValidateOrderaCardLink"/>
           <include name="setExtent"/>
-          <include name="ValidateCardActivityLink"/>
-          <include name="ValidateHomePage"/>
+          <include name="endReport"/>
         </methods>
       </class> <!-- com.Shell.qa.TestCases.TC02_HomePageTest -->
     </classes>
