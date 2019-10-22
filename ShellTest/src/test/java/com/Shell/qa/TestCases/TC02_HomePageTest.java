@@ -1,6 +1,8 @@
 package com.Shell.qa.TestCases;
 
 
+import java.util.Hashtable;
+
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.BeforeClass;
@@ -59,7 +61,7 @@ public class TC02_HomePageTest extends TestBase {
 	
 	}
 	
-	@Test(priority=1,description="Validating 'Order a Card' link on Home Page")
+	/*@Test(priority=1,description="Validating 'Order a Card' link on Home Page")
 	
 	public void ValidateOrderaCardLink() {
 		extentTest=extent.startTest("ValidateOrderaCardLink");
@@ -111,11 +113,19 @@ public class TC02_HomePageTest extends TestBase {
 		boolean AccountName=homePage.ValidateFinanceLink();
 		Assert.assertTrue(AccountName, "Finance Link is not displayed on Home Page");
 	
-	}
+	}*/
 	
+	@Test(dataProvider = "getData",priority=7,description="TC 78561: Verify the list of companies on Home page for logged in user")
+	
+	public void TC78561(Hashtable<String, String> data) {
+		extentTest=extent.startTest("TC78561");
+		homePage.TC78561(data.get("AccountWithSetasDefault"));
+		
+	
+	}
 	//Validate if Successfully moved to Cards Page
 	
-	@Test(priority=7,description="Validating after clicking cards from Home Page, Cards page is displayed")
+	@Test(priority=8,description="Validating after clicking cards from Home Page, Cards page is displayed")
 	
 	public void HomeTest() throws InterruptedException {
 		extentTest=extent.startTest("HomeTest");

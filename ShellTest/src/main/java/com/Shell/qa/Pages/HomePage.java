@@ -1,9 +1,13 @@
 package com.Shell.qa.Pages;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import com.Shell.qa.Base.TestBase;
+import com.relevantcodes.extentreports.LogStatus;
 
 
 public class HomePage extends TestBase {
@@ -76,6 +80,58 @@ public class HomePage extends TestBase {
 		return HomePage_FinanceLink.isDisplayed();
 	}
 	
+	
+	// TC 78561: Verify the list of companies on Home page for logged in user
+	
+	
+		public void TC78561(String AccountWithSetasDefault) {
+			try {
+				LanguageChange(AccountWithSetasDefault);
+				click("ShellMenu_Xpath");
+				click("HomePage_Xpath");
+			
+				/*if (isDisplayedValid("HomePage_ShellMobilityHub_Text")) {
+					click("ShellMenu_Xpath");
+					if (isDisplayedValid("Intersticial_HomePage_CompanyName_LeftHandPane")) {
+						String CompanyName = GetText("Intersticial_HomePage_CompanyName_LeftHandPane");
+						extentTest.log(LogStatus.PASS, "Selected Company Name: " + CompanyName + " is displayed");
+						click("Intersticial_HomePage_CompanyName_LeftHandPane");
+						List<WebElement> TotalCompaniesSize = driver.findElements(By.xpath(prop.getProperty("HomePage_TotalCompaniesCount_LeftPane")));
+						int TotalCompaniesCount = TotalCompaniesSize.size();
+						extentTest.log(LogStatus.PASS, "Count of companies displayed on homepage " + TotalCompaniesCount);
+						
+						// Validating if countries are in alphabetical order
+						Sorting("HomePage_CountriesCount_LeftPane", "Conrties");
+					
+					} else {
+						extentTest.log(LogStatus.FAIL, "Selected Company Name is not displayed");
+					}
+
+				} else if (isDisplayedValid("Intersticial_FirstCompanyNameandNumber")) {
+					click("Intersticial_FirstCompanystatus");
+					click("Intersticial_FirstCompanyNameandNumber");
+					click("ShellMenu_Xpath");
+					if (isDisplayedValid("Intersticial_HomePage_CompanyName_LeftHandPane")) {
+						String CompanyName = GetText("Intersticial_HomePage_CompanyName_LeftHandPane");
+						extentTest.log(LogStatus.PASS, "Selected Company Name: " + CompanyName + " is displayed");
+						click("Intersticial_HomePage_CompanyName_LeftHandPane");
+						List<WebElement> TotalCompaniesSize = driver
+								.findElements(By.xpath(prop.getProperty("HomePage_TotalCompaniesCount_LeftPane")));
+						int TotalCompaniesCount = TotalCompaniesSize.size();
+						extentTest.log(LogStatus.PASS, "Count of companies displayed on homepage " + TotalCompaniesCount);
+						
+						// Validating if countries are in alphabetical order
+						Sorting("HomePage_CountriesCount_LeftPane", "Conrties");
+					} else {
+						extentTest.log(LogStatus.FAIL, "Selected Company Name is not displayed");
+					}
+				}*/
+
+			} catch (Exception e) {
+				extentTest.log(LogStatus.FAIL,
+						"Error while executing TC 78561: Verify the list of companies on Home page for logged in user");
+			}
+		}
 	//Cards Page
 	
 	public CardsPage Home() throws InterruptedException{
