@@ -119,7 +119,7 @@ public class TC02_HomePageTest extends TestBase {
 	
 	public void TC78561(Hashtable<String, String> data) {
 		extentTest=extent.startTest("TC78561");
-		homePage.TC78561(data.get("AccountWithSetasDefault"));
+		homePage.TC82953_TC82954(data.get("SinglePayerMultiAccount"));
 		
 	
 	}

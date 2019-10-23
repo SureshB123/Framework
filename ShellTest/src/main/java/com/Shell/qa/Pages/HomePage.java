@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
 import com.Shell.qa.Base.TestBase;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -81,57 +83,109 @@ public class HomePage extends TestBase {
 	}
 	
 	
-	// TC 78561: Verify the list of companies on Home page for logged in user
-	
-	
-		public void TC78561(String AccountWithSetasDefault) {
-			try {
-				LanguageChange(AccountWithSetasDefault);
-				click("ShellMenu_Xpath");
-				click("HomePage_Xpath");
-			
-				/*if (isDisplayedValid("HomePage_ShellMobilityHub_Text")) {
-					click("ShellMenu_Xpath");
-					if (isDisplayedValid("Intersticial_HomePage_CompanyName_LeftHandPane")) {
-						String CompanyName = GetText("Intersticial_HomePage_CompanyName_LeftHandPane");
-						extentTest.log(LogStatus.PASS, "Selected Company Name: " + CompanyName + " is displayed");
-						click("Intersticial_HomePage_CompanyName_LeftHandPane");
-						List<WebElement> TotalCompaniesSize = driver.findElements(By.xpath(prop.getProperty("HomePage_TotalCompaniesCount_LeftPane")));
-						int TotalCompaniesCount = TotalCompaniesSize.size();
-						extentTest.log(LogStatus.PASS, "Count of companies displayed on homepage " + TotalCompaniesCount);
-						
-						// Validating if countries are in alphabetical order
-						Sorting("HomePage_CountriesCount_LeftPane", "Conrties");
+	public void TC82953_TC82954(String SinglePayerMultiAccount) {
+		try {
+
+			//LanguageChangeAndMakeAccountsUnFavorite_DefaultCompany(LoggedInUSer);
+			LoginToAccount(SinglePayerMultiAccount);
+			GoToURL("HomePage_URL");
+
+			isDisplayedValid("HomePage_TotalOutstanding");
+			isDisplayedValid("HomePage_ViewAccountLink");
+			isDisplayedValid("HomePage_ViewInvoicesLink");
+			isDisplayedValid("HomePage_ManageCardsLink");
+			 
+			// Validation moving to different pages and account name in account switcher should be same as per selected account
+			clickWithoutScrolling("AllAccounts_Xpath");
+			String AllAccounts_FirstRecord = GetText("AllAccounts_FirstRecord");
+			String AllAccounts_FirstRecordAccountNumber = GetText("AllAccounts_FirstRecord_AccountNumber");
+			String Account = AllAccounts_FirstRecord + " " + AllAccounts_FirstRecordAccountNumber;
+			clickWithoutScrolling("AllAccounts_FirstRecord");
+			String AccountSelected = GetText("AllAccounts_SelectedAccount");
+			Assert.assertEquals(Account, AccountSelected, "Account selected from drop down " + Account+ " is not displayed in account switcher at Transactions page");
+
+			// Click Transactions from home page widget
+
+			Refresh();
+			List<WebElement> Size = driver.findElements(By.xpath(prop.getProperty("HomePage_NavigationLinks_Size")));
+			int Contents = Size.size();
+			int Transactions = 0;
+			for (int i = 2; i <= Contents + 1; i++) {
+				 String Text =GetTextMutipleParameters("HomePage_NavigationLinks1", i, "HomePage_NavigationLinks2");
+				// Validate if 'Transactions' should be displayed
+				if (Text.equalsIgnoreCase("Transactions")) {
+					Transactions = 1;
+					clickMutipleParameters("HomePage_NavigationWidgetLink1", i, "HomePage_NavigationWidgetLink2");
 					
-					} else {
-						extentTest.log(LogStatus.FAIL, "Selected Company Name is not displayed");
-					}
+					// Validate Account selected on home page at Transaction page
+					AccountSelected = GetText("AllAccounts_SelectedAccount");
+					
+					Assert.assertEquals(Account, AccountSelected, "Account selected from drop down " + Account+ " is not displayed in account switcher at Transactions page");
 
-				} else if (isDisplayedValid("Intersticial_FirstCompanyNameandNumber")) {
-					click("Intersticial_FirstCompanystatus");
-					click("Intersticial_FirstCompanyNameandNumber");
-					click("ShellMenu_Xpath");
-					if (isDisplayedValid("Intersticial_HomePage_CompanyName_LeftHandPane")) {
-						String CompanyName = GetText("Intersticial_HomePage_CompanyName_LeftHandPane");
-						extentTest.log(LogStatus.PASS, "Selected Company Name: " + CompanyName + " is displayed");
-						click("Intersticial_HomePage_CompanyName_LeftHandPane");
-						List<WebElement> TotalCompaniesSize = driver
-								.findElements(By.xpath(prop.getProperty("HomePage_TotalCompaniesCount_LeftPane")));
-						int TotalCompaniesCount = TotalCompaniesSize.size();
-						extentTest.log(LogStatus.PASS, "Count of companies displayed on homepage " + TotalCompaniesCount);
-						
-						// Validating if countries are in alphabetical order
-						Sorting("HomePage_CountriesCount_LeftPane", "Conrties");
-					} else {
-						extentTest.log(LogStatus.FAIL, "Selected Company Name is not displayed");
-					}
-				}*/
+					break;
+				}
 
-			} catch (Exception e) {
-				extentTest.log(LogStatus.FAIL,
-						"Error while executing TC 78561: Verify the list of companies on Home page for logged in user");
 			}
+			
+			Assert.assertEquals(Transactions, Transactions == 0, "'Transactions' widged is not there for user " + SinglePayerMultiAccount + " on home page");
+				
+
+			// Click Cards from home page
+
+			GoToURL("HomePage_URL");
+			Size = driver.findElements(By.xpath(prop.getProperty("HomePage_NavigationLinks_Size")));
+			Contents = Size.size();
+			int Cards = 0;
+			for (int k = 2; k <= Contents + 1; k++) {
+				 String Text =GetTextMutipleParameters("HomePage_NavigationLinks1", k, "HomePage_NavigationLinks2");
+				
+				// Validate if 'Cards' should be displayed
+				if (Text.equalsIgnoreCase("Cards")) {
+					Cards = 1;
+					clickMutipleParameters("HomePage_NavigationWidgetLink1", k, "HomePage_NavigationWidgetLink2");
+			
+					// Validate Account selected on home page at Transaction page
+					AccountSelected = GetText("AllAccounts_SelectedAccount");
+					Assert.assertEquals(Account, AccountSelected, "Account selected from drop down " + Account+ " is not displayed in account switcher at Transactions page");
+					break;
+				}
+
+			}
+			
+				Assert.assertEquals(Cards, Cards == 0, "'Cards' widged is not there for user " + SinglePayerMultiAccount + " on home page");
+				
+
+			// Click Invoices from home page
+
+			GoToURL("HomePage_URL");
+			Size = driver.findElements(By.xpath(prop.getProperty("HomePage_NavigationLinks_Size")));
+			Contents = Size.size();
+			int Invoice = 0;
+			for (int j = 2; j <= Contents + 1; j++) {
+				 String Text =GetTextMutipleParameters("HomePage_NavigationLinks1", j, "HomePage_NavigationLinks2");
+				// Validate if 'Invoices' should be displayed
+				if (Text.equalsIgnoreCase("Invoices")) {
+					Invoice = 1;
+					clickMutipleParameters("HomePage_NavigationWidgetLink1", j, "HomePage_NavigationWidgetLink2");
+					
+					// Validate Account selected on home page at Transaction  page
+					AccountSelected = GetText("AllAccounts_SelectedAccount");
+					Assert.assertEquals(Account, AccountSelected, "Account selected from drop down " + Account+ " is not displayed in account switcher at Transactions page");
+					break;
+				}
+
+			}
+
+			Assert.assertEquals(Invoice, Invoice == 0, "'Invoices' widged is not there for user " + SinglePayerMultiAccount + " on home page");
+				
+
+		} catch (Exception e) {
+			
+			Assert.fail("Error while executing TC TC82953_TC82954: Verify if logged in user have access to single company, TC 82954:Verify if Fleet Manager can distinguish each Account from the other and the actions the Fleet Manager can take for each Account should be clear");
 		}
+	}
+	
+	
 	//Cards Page
 	
 	public CardsPage Home() throws InterruptedException{
