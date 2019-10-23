@@ -153,7 +153,7 @@ public class TestBase {
 			EnterText(Searchbox, Text);
 			click(ClickSearchbutton);
 			Wait(Searchbox);
-			if (isDisplayedValid("PricedTransaction_NoItemsMatch")) {
+			if (IsDisplayed("PricedTransaction_NoItemsMatch")) {
 				extentTest.log(LogStatus.INFO, "No items match is displayed");
 			} else {
 				extentTest.log(LogStatus.PASS, "Results displayed for valid search input");
@@ -212,7 +212,7 @@ public class TestBase {
 					// Clicking Account Access tab
 					clickMutipleParameters("UserNamg_Tabs_UserDetailsPage1", k, "UserNamg_Tabs_UserDetailsPage2");
 					Thread.sleep(5000);
-					if (isDisplayedValid("UserMang__AccountAccess_FirstPayer")) {
+					if (IsDisplayed("UserMang__AccountAccess_FirstPayer")) {
 						click("UserMang__AccountAccess_FirstPayerAccordian");
 						Thread.sleep(3000);
 						Size = driver.findElements(By.xpath(prop.getProperty(
@@ -292,7 +292,7 @@ public class TestBase {
 								flag1 = 1;
 								clickMutipleParameters("UserMang_AccountsSize1", m, "UserMang_AccountsSize2");
 								// Validate if Permissions tab is there
-								if (isDisplayedValid("UserMang_AccountAccess_Permissions_Tab")) {
+								if (IsDisplayed("UserMang_AccountAccess_Permissions_Tab")) {
 									extentTest.log(LogStatus.PASS, "'Permissions' tab is there for user "
 											+ NonUUIDUserUnderAdminUser + " under admin user " + AdminUser);
 									TakeScreenshot();
@@ -323,13 +323,13 @@ public class TestBase {
 									}
 									click("UserMang_UserDetails_Permissions_SavePermissions");
 
-									if (isDisplayedValid("NewUser_UserDetails_CreateUser_GiveAccess_Button")) {
+									if (IsDisplayed("NewUser_UserDetails_CreateUser_GiveAccess_Button")) {
 										click("NewUser_UserDetails_CreateUser_GiveAccess_Button");
 									}
 
 									// Validate the success message after Saving permissions
 
-									if (isDisplayedValid("UserMang_Permissions_SuccessMessage")) {
+									if (IsDisplayed("UserMang_Permissions_SuccessMessage")) {
 										extentTest.log(LogStatus.PASS, "Success message displayed after saving permissions");
 										TakeScreenshot();
 
@@ -415,7 +415,7 @@ public class TestBase {
 								flag1 = 1;
 								clickMutipleParameters("UserMang_AccountsSize1", m, "UserMang_AccountsSize2");
 								// Validate if Permissions tab is there
-								if (isDisplayedValid("UserMang_AccountAccess_Permissions_Tab")) {
+								if (IsDisplayed("UserMang_AccountAccess_Permissions_Tab")) {
 									extentTest.log(LogStatus.PASS,
 											"'Permissions' tab is there for user " + NonUIDUserInUserManagement
 													+ " under admin user " + UserHavingMansourAsCompany);
@@ -463,13 +463,13 @@ public class TestBase {
 									}
 									click("UserMang_UserDetails_Permissions_SavePermissions");
 
-									if (isDisplayedValid("NewUser_UserDetails_CreateUser_GiveAccess_Button")) {
+									if (IsDisplayed("NewUser_UserDetails_CreateUser_GiveAccess_Button")) {
 										click("NewUser_UserDetails_CreateUser_GiveAccess_Button");
 									}
 
 									// Validate the success message after Saving permissions
 
-									if (isDisplayedValid("UserMang_Permissions_SuccessMessage")) {
+									if (IsDisplayed("UserMang_Permissions_SuccessMessage")) {
 										extentTest.log(LogStatus.PASS, "Success message displayed after saving permissions");
 										TakeScreenshot();
 
@@ -567,13 +567,13 @@ public class TestBase {
 			}
 			click("UserMang_UserDetails_Permissions_SavePermissions");
 
-			if (isDisplayedValid("NewUser_UserDetails_CreateUser_GiveAccess_Button")) {
+			if (IsDisplayed("NewUser_UserDetails_CreateUser_GiveAccess_Button")) {
 				click("NewUser_UserDetails_CreateUser_GiveAccess_Button");
 			}
 
 			// Validate the success message after Saving permissions
 
-			if (isDisplayedValid("UserMang_Permissions_SuccessMessage")) {
+			if (IsDisplayed("UserMang_Permissions_SuccessMessage")) {
 				extentTest.log(LogStatus.PASS, "Success message displayed after saving permissions");
 				TakeScreenshot();
 
@@ -955,7 +955,7 @@ public class TestBase {
 			click("CustomerConfig_ConfirmButton");
 			Wait("CustomerConfig_ApplySettings_SuccessMessage");
 
-			if (isDisplayedValid("CustomerConfig_ApplySettings_SuccessMessage")) {
+			if (IsDisplayed("CustomerConfig_ApplySettings_SuccessMessage")) {
 				String Text = GetText("CustomerConfig_ApplySettings_SuccessMessage");
 				if (Text.contains(CompanyID)) {
 					flag = 1;
@@ -1020,7 +1020,7 @@ public class TestBase {
 			EnterText("MarketConfiguration_SigleCompanyAdminUser_Email", "Automation" + RandomString() + "@gmail.com");
 			EnterText("MarketConfiguration_MultipleCompanyAdminUser_Phone", RandomNumbers());
 			click("MarketConfiguration_SigleCompanyAdminUser_Apply");
-			if (isDisplayedValid("MarketConfiguration_SuccessMessage")) {
+			if (IsDisplayed("MarketConfiguration_SuccessMessage")) {
 				Apply = 1;
 			} else {
 				Apply = 0;
@@ -1508,25 +1508,20 @@ public class TestBase {
 
 	}
 
-	// IsDisplayedValid(For Validation- Irrespective of PASS/FAIL)
+	// IsDisplayed(For Validation- Irrespective of PASS/FAIL)
 
-	public boolean isDisplayedValid(String locatorkey) {
+	public boolean IsDisplayed(String locatorkey) {
 		WebElement Element = null;
 		int timeout = 5;
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, timeout);
 			Element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(prop.getProperty(locatorkey))));
-			extentTest.log(LogStatus.INFO, locatorkey + " is displayed");
-			TakeScreenshot();
-			System.out.println(locatorkey + " is displayed");
+			Element.isDisplayed();
 			return true;
 		} catch (Exception e) {
-
-			extentTest.log(LogStatus.INFO, locatorkey + " is not displayed");
-			System.out.println(locatorkey + " is not displayed");
-			TakeScreenshot();
-			e.printStackTrace();
+			Assert.fail(locatorkey + " is not displayed");
 			return false;
+			
 		}
 
 	}
@@ -1557,10 +1552,10 @@ public class TestBase {
 
 	}
 
-	// IsDisplayedValid(For Validation- Irrespective of PASS/FAIL for Long
+	// IsDisplayed(For Validation- Irrespective of PASS/FAIL for Long
 	// Xpaths)
 
-	public boolean isDisplayedValidation(String locatorkey1, String locatorkey2, int i) {
+	public boolean IsDisplayedation(String locatorkey1, String locatorkey2, int i) {
 		WebElement Element = null;
 		int timeout = 5;
 
@@ -1833,8 +1828,8 @@ public class TestBase {
 	 * EnteredTextPath.getAttribute("value"); int StrLength = EnteredText.length();
 	 * test.log(LogStatus.INFO, "Entered Text is : " + EnteredText +
 	 * " whose length is: " + StrLength); if
-	 * (isDisplayedValid("NameOnCard_ErrorMsg1") ||
-	 * isDisplayedValid("NameOnCard_ErrorMsg2")) { test.log(LogStatus.PASS, Test +
+	 * (IsDisplayed("NameOnCard_ErrorMsg1") ||
+	 * IsDisplayed("NameOnCard_ErrorMsg2")) { test.log(LogStatus.PASS, Test +
 	 * " is throwing proper error message for invalid input"); } else {
 	 * test.log(LogStatus.FAIL, Test +
 	 * " is not throwing proper error message for invalid input"); }
@@ -2125,7 +2120,7 @@ public class TestBase {
 				// Click 'Enter'
 				driver.findElement(By.xpath(prop.getProperty("CustomerConfig_SearchCompany"))).sendKeys(Keys.ENTER);
 
-				if (isDisplayedValid("CustomerConfig_NoMatchingCompanies")) {
+				if (IsDisplayed("CustomerConfig_NoMatchingCompanies")) {
 					int k = 1;
 					while (k <= 20) {
 						EnterText("CustomerConfig_SearchCompany", CompanyName);
@@ -2152,7 +2147,7 @@ public class TestBase {
 
 						}
 						if (flag1 == 0) {
-							if (isDisplayedValid("CustomerConfig_LoadMoreResults")) {
+							if (IsDisplayed("CustomerConfig_LoadMoreResults")) {
 								click("CustomerConfig_LoadMoreResults");
 							} else {
 								extentTest.log(LogStatus.FAIL,
@@ -2266,7 +2261,7 @@ public class TestBase {
 				click("CustomerConfig_ConfirmButton");
 
 				Wait("CustomerConfig_ApplySettings_SuccessMessage");
-				if (isDisplayedValid("CustomerConfig_ApplySettings_SuccessMessage")) {
+				if (IsDisplayed("CustomerConfig_ApplySettings_SuccessMessage")) {
 					flag = 1;
 				} else {
 					flag = 0;
@@ -2325,7 +2320,7 @@ public class TestBase {
 						"Automation" + RandomString() + "@gmail.com");
 				EnterText("MarketConfiguration_MultipleCompanyAdminUser_Phone", RandomNumbers());
 				click("MarketConfiguration_SigleCompanyAdminUser_Apply");
-				if (isDisplayedValid("MarketConfiguration_SuccessMessage")) {
+				if (IsDisplayed("MarketConfiguration_SuccessMessage")) {
 					Apply = 1;
 				} else {
 					Apply = 0;
@@ -2777,7 +2772,7 @@ public class TestBase {
 					// Clicking Account Access tab
 					clickMutipleParameters("UserNamg_Tabs_UserDetailsPage1", k, "UserNamg_Tabs_UserDetailsPage2");
 					Thread.sleep(5000);
-					if (isDisplayedValid("UserMang_AccountAccess_FirstPayerAccordion_SinglePayerUser")) {
+					if (IsDisplayed("UserMang_AccountAccess_FirstPayerAccordion_SinglePayerUser")) {
 						click("UserMang_AccountAccess_FirstPayerAccordion_SinglePayerUser");
 						Thread.sleep(10000);
 						Wait("UserMang_AccountAccess_MyCompaniesIn_FirstPayer_FirstAccount_Star_Size");
@@ -2861,7 +2856,7 @@ public class TestBase {
 					// Clicking Account Access tab
 					clickMutipleParameters("UserNamg_Tabs_UserDetailsPage1", k, "UserNamg_Tabs_UserDetailsPage2");
 					Thread.sleep(5000);
-					if (isDisplayedValid("UserMang_AccountAccess_FirstPayerAccordion_SinglePayerUser")) {
+					if (IsDisplayed("UserMang_AccountAccess_FirstPayerAccordion_SinglePayerUser")) {
 						click("UserMang_AccountAccess_FirstPayerAccordion_SinglePayerUser");
 						Thread.sleep(5000);
 						Wait("UserMang_AccountAccess_MyCompaniesIn_FirstPayer_FirstAccount_Star_Size");
@@ -2927,7 +2922,7 @@ public class TestBase {
 					clickMutipleParameters("UserNamg_Tabs_UserDetailsPage1", k, "UserNamg_Tabs_UserDetailsPage2");
 					Thread.sleep(5000);
 					Wait("UserMang_AccountAccess_FirstPayer_MultiPayerUser");
-					if (isDisplayedValid("UserMang_AccountAccess_FirstPayer_MultiPayerUser")) {
+					if (IsDisplayed("UserMang_AccountAccess_FirstPayer_MultiPayerUser")) {
 						click("UserMang_AccountAccess_FirstPayerAccordion_MultiPayerUser");
 						Thread.sleep(5000);
 						Wait("UserMang_AccountAccess_MyCompaniesIn_FirstPayer_FirstAccount_Star_Size");
@@ -2991,7 +2986,7 @@ public class TestBase {
 
 				// Validate if New user Text is displayed
 
-				if (isDisplayedValid("NewUser_Text")) {
+				if (IsDisplayed("NewUser_Text")) {
 
 					EnterText("NewUser_UserDetails_FirstName", "ShellAutomation " + RandomString());
 					EnterText("NewUser_UserDetails_LastName", "Automation " + RandomString());
@@ -3006,7 +3001,7 @@ public class TestBase {
 					// Validate user should get Create user option and access account page should
 					// not get displayed
 
-					if (isDisplayedValid("NewUser_UserDetails_CreateUser_Button")) {
+					if (IsDisplayed("NewUser_UserDetails_CreateUser_Button")) {
 						extentTest.log(LogStatus.PASS,
 								"User get 'Create user' button and access account page should not get displayed for Multi payer , Single country , Single account  "
 										+ Username);
@@ -3019,7 +3014,7 @@ public class TestBase {
 						TakeScreenshot();
 					}
 
-					if (isDisplayedValid("AdminAccessPopUp")) {
+					if (IsDisplayed("AdminAccessPopUp")) {
 						extentTest.log(LogStatus.PASS, "'Give administrator access?' Pop-up displayed");
 						TakeScreenshot();
 						click("NewUser_UserDetails_CreateUser_GiveAccess_Button");
@@ -3035,7 +3030,7 @@ public class TestBase {
 					String UUID = GetText("ConfigSIT_UserManagementTab_UUID");
 					extentTest.log(LogStatus.INFO, "UUID: " + UUID);
 					LoginToAccount(UUID);
-					if (isDisplayedValid("Cokies_PopUp")) {
+					if (IsDisplayed("Cokies_PopUp")) {
 						extentTest.log(LogStatus.INFO, "Cookies Pop-up displayed");
 						click("CookiesPopUp_AgreeAndProceedButton");
 
@@ -3092,7 +3087,7 @@ public class TestBase {
 
 			String PurchaseCategory = GetText("CreateNewRestrictionPrfile_LastPurchaseCategory");
 
-			if (isDisplayedValid("CreateNewRestrictionPrfile_FirstVehicleSize")) {
+			if (IsDisplayed("CreateNewRestrictionPrfile_FirstVehicleSize")) {
 				VehicleSize = GetText("CreateNewRestrictionPrfile_LastVehicleSize");
 			}
 			ClickPurchaseCategoryAndVehicleType(VehicleSize, PurchaseCategory);
@@ -3177,7 +3172,7 @@ public class TestBase {
 			click("RestrictProfiles_NoProfApplPage_MoveCardsToProf_MoveCards");
 
 			Thread.sleep(4000);
-			if (isDisplayedValid("Restrict_AddCrdToProf_CrdAddedSuccessMsg")) {
+			if (IsDisplayed("Restrict_AddCrdToProf_CrdAddedSuccessMsg")) {
 				extentTest.log(LogStatus.PASS, "Selected cards moved successfully to profile " + RestrictionProfile);
 			} else {
 				extentTest.log(LogStatus.FAIL, "Unable to move cards to profile " + RestrictionProfile);
@@ -3203,7 +3198,7 @@ public class TestBase {
 			String PurchaseCategory = GetText("CreateNewRestrictionPrfile_FirstPurchaseCategory");
 			int flag = 0;
 
-			if (isDisplayedValid("CreateNewRestrictionPrfile_FirstVehicleSize")) {
+			if (IsDisplayed("CreateNewRestrictionPrfile_FirstVehicleSize")) {
 				String VehicleSize = GetText("CreateNewRestrictionPrfile_FirstVehicleSize");
 			}
 
@@ -3302,7 +3297,7 @@ public class TestBase {
 			click("RestrictProfiles_NoProfApplPage_MoveCardsToProf_MoveCards");
 
 			Thread.sleep(4000);
-			if (isDisplayedValid("Restrict_AddCrdToProf_CrdAddedSuccessMsg")) {
+			if (IsDisplayed("Restrict_AddCrdToProf_CrdAddedSuccessMsg")) {
 				extentTest.log(LogStatus.PASS, "Selected cards moved successfully to profile " + RestrictionProfile);
 			} else {
 				extentTest.log(LogStatus.FAIL, "Unable to move cards to profile " + RestrictionProfile);
@@ -3324,7 +3319,7 @@ public class TestBase {
 			if (ProfileSettingsCategoriesSize == 2) {
 
 				// Select a Vehicle type(displayed)
-				if (isDisplayedValid("Restrictions_SelectAVehicleType_Text")) {
+				if (IsDisplayed("Restrictions_SelectAVehicleType_Text")) {
 					isDisplayed("Restrictions_SmallerVehicles");
 					isDisplayed("Restrictions_LargerVehicles");
 				} else {
@@ -3332,7 +3327,7 @@ public class TestBase {
 				}
 
 				// Select a Purchase Category(displayed)
-				if (isDisplayedValid("Restrictions_SelectAPurchaseCategory_Text")) {
+				if (IsDisplayed("Restrictions_SelectAPurchaseCategory_Text")) {
 
 				} else {
 					extentTest.log(LogStatus.INFO, "Select a purchase category is not applicable for user");
@@ -3365,7 +3360,7 @@ public class TestBase {
 	public void ClickVehicleType(String VehicleTypeFromXcel) {
 
 		try {
-			if (isDisplayedValid("Restrictions_SelectAVehicleType_Text")) {
+			if (IsDisplayed("Restrictions_SelectAVehicleType_Text")) {
 				List<WebElement> VehicleType = driver
 						.findElements(By.xpath(prop.getProperty("Restrictions_VehicleType")));
 				int VehicleTypeFuelSize = VehicleType.size();
@@ -3391,7 +3386,7 @@ public class TestBase {
 	public void PurchaseCategory(String PurchaseCategoryFromXcel) {
 
 		try {
-			if (isDisplayedValid("Restrictions_SelectAPurchaseCategory_Text")) {
+			if (IsDisplayed("Restrictions_SelectAPurchaseCategory_Text")) {
 				List<WebElement> PurchaseCategory = driver
 						.findElements(By.xpath(prop.getProperty("Restrictions_PurchaseCategory")));
 				int PurchaseCategorySize = PurchaseCategory.size();

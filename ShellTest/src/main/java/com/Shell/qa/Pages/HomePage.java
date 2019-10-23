@@ -89,10 +89,10 @@ public class HomePage extends TestBase {
 			//LanguageChangeAndMakeAccountsUnFavorite_DefaultCompany(LoggedInUSer);
 			LoginToAccount(SinglePayerMultiAccount);
 
-			isDisplayedValid("HomePage_TotalOutstanding");
-			isDisplayedValid("HomePage_ViewAccountLink");
-			isDisplayedValid("HomePage_ViewInvoicesLink");
-			isDisplayedValid("HomePage_ManageCardsLink");
+			IsDisplayed("HomePage_TotalOutstanding");
+			IsDisplayed("HomePage_ViewAccountLink");
+			IsDisplayed("HomePage_ViewInvoicesLink");
+			IsDisplayed("HomePage_ManageCardsLink");
 			 
 			// Validation moving to different pages and account name in account switcher should be same as per selected account
 			click("AllAccounts_Xpath");
