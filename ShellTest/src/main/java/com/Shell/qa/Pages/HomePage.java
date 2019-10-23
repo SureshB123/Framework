@@ -88,7 +88,6 @@ public class HomePage extends TestBase {
 
 			//LanguageChangeAndMakeAccountsUnFavorite_DefaultCompany(LoggedInUSer);
 			LoginToAccount(SinglePayerMultiAccount);
-			GoToURL("HomePage_URL");
 
 			isDisplayedValid("HomePage_TotalOutstanding");
 			isDisplayedValid("HomePage_ViewAccountLink");
@@ -96,11 +95,11 @@ public class HomePage extends TestBase {
 			isDisplayedValid("HomePage_ManageCardsLink");
 			 
 			// Validation moving to different pages and account name in account switcher should be same as per selected account
-			clickWithoutScrolling("AllAccounts_Xpath");
+			click("AllAccounts_Xpath");
 			String AllAccounts_FirstRecord = GetText("AllAccounts_FirstRecord");
 			String AllAccounts_FirstRecordAccountNumber = GetText("AllAccounts_FirstRecord_AccountNumber");
 			String Account = AllAccounts_FirstRecord + " " + AllAccounts_FirstRecordAccountNumber;
-			clickWithoutScrolling("AllAccounts_FirstRecord");
+			click("AllAccounts_FirstRecord");
 			String AccountSelected = GetText("AllAccounts_SelectedAccount");
 			Assert.assertEquals(Account, AccountSelected, "Account selected from drop down " + Account+ " is not displayed in account switcher at Transactions page");
 
@@ -127,7 +126,7 @@ public class HomePage extends TestBase {
 
 			}
 			
-			Assert.assertEquals(Transactions, Transactions == 0, "'Transactions' widged is not there for user " + SinglePayerMultiAccount + " on home page");
+			Assert.assertEquals(Transactions, Transactions == 0, " 'Transactions' widged is not there for user " + SinglePayerMultiAccount + " on home page");
 				
 
 			// Click Cards from home page
@@ -138,7 +137,6 @@ public class HomePage extends TestBase {
 			int Cards = 0;
 			for (int k = 2; k <= Contents + 1; k++) {
 				 String Text =GetTextMutipleParameters("HomePage_NavigationLinks1", k, "HomePage_NavigationLinks2");
-				
 				// Validate if 'Cards' should be displayed
 				if (Text.equalsIgnoreCase("Cards")) {
 					Cards = 1;
@@ -152,7 +150,7 @@ public class HomePage extends TestBase {
 
 			}
 			
-				Assert.assertEquals(Cards, Cards == 0, "'Cards' widged is not there for user " + SinglePayerMultiAccount + " on home page");
+			Assert.assertEquals(Cards, Cards == 0, " 'Cards' widged is not there for user " + SinglePayerMultiAccount + " on home page");
 				
 
 			// Click Invoices from home page
@@ -176,7 +174,7 @@ public class HomePage extends TestBase {
 
 			}
 
-			Assert.assertEquals(Invoice, Invoice == 0, "'Invoices' widged is not there for user " + SinglePayerMultiAccount + " on home page");
+			Assert.assertEquals(Invoice, Invoice == 0, " 'Invoices' widged is not there for user " + SinglePayerMultiAccount + " on home page");
 				
 
 		} catch (Exception e) {

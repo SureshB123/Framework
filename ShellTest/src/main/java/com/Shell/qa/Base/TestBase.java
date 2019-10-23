@@ -742,30 +742,19 @@ public class TestBase {
 		try {
 			wait = new WebDriverWait(driver, timeout);
 			Element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(prop.getProperty(Xpath))));
-			extentTest.log(LogStatus.INFO, "Clicking " + Xpath);
 			ScrollToElement(Xpath);
 			Element.click();
-			extentTest.log(LogStatus.INFO, "Clicked " + Xpath);
-			TakeScreenshot();
 
 		} catch (Exception e) {
 			try {
 				Thread.sleep(7000);
-				extentTest.log(LogStatus.INFO, "Unable to click, trying once again clicking " + Xpath);
-				// Element.click();
 				wait = new WebDriverWait(driver, timeout);
 				Element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(prop.getProperty(Xpath))));
-				extentTest.log(LogStatus.INFO, "Clicking " + Xpath);
 				ScrollToElement(Xpath);
 				Element.click();
-				extentTest.log(LogStatus.INFO, "Clicked " + Xpath);
-				TakeScreenshot();
 			} catch (InterruptedException e1) {
-				extentTest.log(LogStatus.FAIL, "Unable to click " + Xpath);
-				extentTest.log(LogStatus.INFO, e1.getMessage());
-				System.out.println("Unable to click " + Xpath);
-				e1.printStackTrace();
-				TakeScreenshot();
+				Assert.fail("Unable to click " + Xpath);
+				
 			}
 
 		}
@@ -796,39 +785,6 @@ public class TestBase {
 		// act.moveToElement(To).moveByOffset(960, 420).build().perform();
 	}
 
-	// Click without scrolling
-
-	public void clickWithoutScrolling(String Xpath) {
-		WebElement Element = null;
-		int timeout = 18;
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, timeout);
-			Element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(prop.getProperty(Xpath))));
-			extentTest.log(LogStatus.INFO, "Clicking " + Xpath);
-			System.out.println("Clicking " + Xpath);
-			Element.click();
-			Thread.sleep(1500);
-			extentTest.log(LogStatus.INFO, "Clicked " + Xpath);
-			System.out.println("Clicked " + Xpath);
-			TakeScreenshot();
-
-		} catch (Exception e) {
-			try {
-				Thread.sleep(6000);
-				extentTest.log(LogStatus.INFO, "Unable to click, trying once again clicking " + Xpath);
-				Element.click();
-			} catch (Exception e1) {
-				e1.printStackTrace();
-				extentTest.log(LogStatus.FAIL, "Unable to click " + Xpath);
-				TakeScreenshot();
-				extentTest.log(LogStatus.INFO, e.getMessage());
-				System.out.println("Unable to click " + Xpath);
-				e1.printStackTrace();
-			}
-
-		}
-	}
-
 	public void clickMutipleParameters(String Xpath1, int i, String Xpath2) {
 		WebElement Element = null;
 		int timeout = 70;
@@ -836,26 +792,16 @@ public class TestBase {
 			WebDriverWait wait = new WebDriverWait(driver, timeout);
 			Element = wait.until(ExpectedConditions.elementToBeClickable(
 					driver.findElement(By.xpath(prop.getProperty(Xpath1) + i + prop.getProperty(Xpath2)))));
-			extentTest.log(LogStatus.INFO, "Clicking: " + Xpath1 + i + Xpath2);
-			System.out.println("Clicking: " + Xpath1 + i + Xpath2);
 			Element.click();
 			Thread.sleep(1000);
-			extentTest.log(LogStatus.INFO, "Clicked: " + Xpath1 + i + Xpath2);
-			System.out.println("Clicked: " + Xpath1 + i + Xpath2);
-			TakeScreenshot();
 
 		} catch (Exception e) {
 			try {
-				Thread.sleep(10000);
-				extentTest.log(LogStatus.INFO, "Unable to click, trying once again clicking " + Xpath1 + i + Xpath2);
-				System.out.println("Unable to click, trying once again clicking " + Xpath1 + i + Xpath2);
 				Element.click();
 			} catch (Exception e1) {
 				extentTest.log(LogStatus.FAIL, "Unable to click " + Xpath1 + i + Xpath2);
-				extentTest.log(LogStatus.INFO, e1.getMessage());
-				System.out.println("Unable to click " + Xpath1 + i + Xpath2);
-				e1.printStackTrace();
-				TakeScreenshot();
+				Assert.fail("Unable to click " + Xpath1 + i + Xpath2);
+				
 			}
 
 		}
