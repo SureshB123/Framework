@@ -1,5 +1,6 @@
 package com.Shell.qa.Pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -30,17 +31,16 @@ public class LoginPage extends TestBase {
 	
 	public boolean validateLoginPage() {
 		
-		return LoginButton.isDisplayed();
+		return IsDisplayed("LoginButton");
 		
 	}
 	
 	//Login
 	
-	public HomePage Login(String un,String pw) throws InterruptedException {
-		
-		userName.sendKeys(un);
-		password.sendKeys(pw);
-		LoginButton.click();
+	public static HomePage Login(String un,String pw) throws InterruptedException {
+		EnterText("UserName_Xpath", un);
+		EnterText("Password_Xpath", pw);
+		click("LoginButton");
 		Thread.sleep(5000);
 		String URL=GetCurrentURL();
 		if(URL.equalsIgnoreCase(prop.getProperty("HomePage_URL"))) {

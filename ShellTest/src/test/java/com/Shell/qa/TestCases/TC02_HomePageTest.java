@@ -61,61 +61,8 @@ public class TC02_HomePageTest extends TestBase {
 		
 	}
 	
-	/*@Test(priority=1,description="Validating 'Order a Card' link on Home Page")
 	
-	public void ValidateOrderaCardLink() {
-		extentTest=extent.startTest("ValidateOrderaCardLink");
-		boolean AccountName=homePage.ValidateOrderACardLink();
-		Assert.assertTrue(AccountName, "Order A Card is not displayed on Home Page");
-	
-	}
-	
-	@Test(priority=2,description="Validating 'Block card' link on Home Page")
-	
-	public void ValidateBlockCardLink() {
-		extentTest=extent.startTest("ValidateBlockCardLink");
-		boolean AccountName=homePage.ValidateBlockCard();
-		Assert.assertTrue(AccountName, "Block Card Link is not displayed on Home Page");
-	
-	}
-
-	@Test(priority=3,description="Validating 'Cancel Card' link on Home Page")
-
-	public void ValidateCancelCardLink() {
-		extentTest=extent.startTest("ValidateCancelCardLink");
-		boolean AccountName=homePage.ValidateCancelCard();
-		Assert.assertTrue(AccountName, "Cancel Card Link is not displayed on Home Page");
-
-	}
-	
-	@Test(priority=4,description="Validating 'Card Activity' link on Home Page")
-	
-	public void ValidateCardActivityLink() {
-		extentTest=extent.startTest("ValidateCardActivityLink");
-		boolean AccountName=homePage.ValidateCardActivityLink();
-		Assert.assertTrue(AccountName, "Card Activity Link is not displayed on Home Page");
-	
-	}
-	
-	@Test(priority=5,description="Validating 'Cards' link on Home Page")
-	
-	public void ValidateCardsLink() {
-		extentTest=extent.startTest("ValidateCardsLink");
-		boolean AccountName=homePage.ValidateCardsLink();
-		Assert.assertTrue(AccountName, "Card Link is not displayed on Home Page");
-	
-	}
-	
-	@Test(priority=6,description="Validating 'Finance' link on Home Page")
-	
-	public void ValidateFinanceLink() {
-		extentTest=extent.startTest("ValidateFinanceLink");
-		boolean AccountName=homePage.ValidateFinanceLink();
-		Assert.assertTrue(AccountName, "Finance Link is not displayed on Home Page");
-	
-	}*/
-	
-	@Test(dataProvider = "getData",priority=7,description="TC82953_TC82954: Verify the list of companies on Home page for logged in user")
+	@Test(dataProvider = "getData",priority=1,description="TC82953_TC82954: Verify the list of companies on Home page for logged in user")
 	
 	public void TC82953_TC82954(Hashtable<String, String> data){
 		extentTest=extent.startTest("TC82953_TC82954");
@@ -126,7 +73,7 @@ public class TC02_HomePageTest extends TestBase {
 	
 	//Validate if Successfully moved to Cards Page
 	
-	@Test(priority=8,description="Validating after clicking cards from Home Page, Cards page is displayed")
+	@Test(priority=2,description="Validating after clicking cards from Home Page, Cards page is displayed")
 	
 	public void HomeTest() throws InterruptedException {
 		extentTest=extent.startTest("HomeTest");
