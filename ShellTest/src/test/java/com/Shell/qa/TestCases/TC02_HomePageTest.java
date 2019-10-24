@@ -1,6 +1,8 @@
 package com.Shell.qa.TestCases;
 
 
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.Hashtable;
 
 import org.testng.Assert;
@@ -55,10 +57,8 @@ public class TC02_HomePageTest extends TestBase {
 	
 	public void ValidateHomePage() {
 		extentTest=extent.startTest("ValidateHomePage");
-		boolean AccountName=homePage.ValidateCompanyName();
-		Assert.assertTrue(AccountName, "Not on Home Page");
+		IsDisplayed("HomePageCompnayName");
 		
-	
 	}
 	
 	/*@Test(priority=1,description="Validating 'Order a Card' link on Home Page")
@@ -115,14 +115,15 @@ public class TC02_HomePageTest extends TestBase {
 	
 	}*/
 	
-	@Test(dataProvider = "getData",priority=7,description="TC 78561: Verify the list of companies on Home page for logged in user")
+	@Test(dataProvider = "getData",priority=7,description="TC82953_TC82954: Verify the list of companies on Home page for logged in user")
 	
-	public void TC78561(Hashtable<String, String> data) {
-		extentTest=extent.startTest("TC78561");
+	public void TC82953_TC82954(Hashtable<String, String> data){
+		extentTest=extent.startTest("TC82953_TC82954");
 		homePage.TC82953_TC82954(data.get("SinglePayerMultiAccount"));
 		
 	
 	}
+	
 	//Validate if Successfully moved to Cards Page
 	
 	@Test(priority=8,description="Validating after clicking cards from Home Page, Cards page is displayed")

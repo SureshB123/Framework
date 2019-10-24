@@ -48,6 +48,22 @@ public class HomePage extends TestBase {
 	@FindBy(xpath="//div[@class='o-grid u-color-block--padded']/div[3]//a")
 	WebElement HomePage_FinanceLink;
 	
+	@FindBy(xpath="//div[@class='c-site-layout__primary-area']/div[2]/button ")
+	WebElement ShellMenu;
+	
+	@FindBy(xpath="//ul[@class='c-primary-nav']/li[1]/a")
+	WebElement HomePageButton;
+	
+	@FindBy(xpath="//ul[@class='c-primary-nav']/li[3]/a")
+	WebElement ReportsButton;
+	
+	@FindBy(xpath="//ul[@class='c-primary-nav']/li[4]/a")
+	WebElement FinanceButton;
+	
+	@FindBy(xpath=" //ul[contains(@class,'c-primary-nav')]//li[2]/a")
+	WebElement CardsButton;
+	
+	
 	public HomePage() {
 		PageFactory.initElements(driver,this);
 	}
@@ -83,7 +99,7 @@ public class HomePage extends TestBase {
 	}
 	
 	
-	public void TC82953_TC82954(String SinglePayerMultiAccount) {
+	public static void TC82953_TC82954(String SinglePayerMultiAccount) {
 		try {
 
 			//LanguageChangeAndMakeAccountsUnFavorite_DefaultCompany(LoggedInUSer);
@@ -100,12 +116,24 @@ public class HomePage extends TestBase {
 			String AllAccounts_FirstRecordAccountNumber = GetText("AllAccounts_FirstRecord_AccountNumber");
 			String Account = AllAccounts_FirstRecord + " " + AllAccounts_FirstRecordAccountNumber;
 			click("AllAccounts_FirstRecord");
+			Wait("AllAccounts_Xpath");
 			String AccountSelected = GetText("AllAccounts_SelectedAccount");
 			Assert.assertEquals(Account, AccountSelected, "Account selected from drop down " + Account+ " is not displayed in account switcher at Transactions page");
 
-			// Click Transactions from home page widget
+		/*	// Click Transactions from home page widget
 
-			Refresh();
+			click("AllAccounts_Xpath");
+			click("AllAccounts_AllAccounts");
+			Wait("AllAccounts_Xpath");
+			GoToURL("HomePage_URL");
+			Wait("AllAccounts_Xpath");
+			click("AllAccounts_Xpath");
+			AllAccounts_FirstRecord = GetText("AllAccounts_FirstRecord");
+			AllAccounts_FirstRecordAccountNumber = GetText("AllAccounts_FirstRecord_AccountNumber");
+			Account = AllAccounts_FirstRecord + " " + AllAccounts_FirstRecordAccountNumber;
+			click("AllAccounts_FirstRecord");
+			Wait("AllAccounts_Xpath");
+			AccountSelected = GetText("AllAccounts_SelectedAccount");
 			List<WebElement> Size = driver.findElements(By.xpath(prop.getProperty("HomePage_NavigationLinks_Size")));
 			int Contents = Size.size();
 			int Transactions = 0;
@@ -115,7 +143,7 @@ public class HomePage extends TestBase {
 				if (Text.equalsIgnoreCase("Transactions")) {
 					Transactions = 1;
 					clickMutipleParameters("HomePage_NavigationWidgetLink1", i, "HomePage_NavigationWidgetLink2");
-					
+					Wait("AllAccounts_Xpath");
 					// Validate Account selected on home page at Transaction page
 					AccountSelected = GetText("AllAccounts_SelectedAccount");
 					
@@ -132,6 +160,7 @@ public class HomePage extends TestBase {
 			// Click Cards from home page
 
 			GoToURL("HomePage_URL");
+			Wait("AllAccounts_Xpath");
 			Size = driver.findElements(By.xpath(prop.getProperty("HomePage_NavigationLinks_Size")));
 			Contents = Size.size();
 			int Cards = 0;
@@ -141,7 +170,7 @@ public class HomePage extends TestBase {
 				if (Text.equalsIgnoreCase("Cards")) {
 					Cards = 1;
 					clickMutipleParameters("HomePage_NavigationWidgetLink1", k, "HomePage_NavigationWidgetLink2");
-			
+					Wait("AllAccounts_Xpath");
 					// Validate Account selected on home page at Transaction page
 					AccountSelected = GetText("AllAccounts_SelectedAccount");
 					Assert.assertEquals(Account, AccountSelected, "Account selected from drop down " + Account+ " is not displayed in account switcher at Transactions page");
@@ -156,6 +185,7 @@ public class HomePage extends TestBase {
 			// Click Invoices from home page
 
 			GoToURL("HomePage_URL");
+			Wait("AllAccounts_Xpath");
 			Size = driver.findElements(By.xpath(prop.getProperty("HomePage_NavigationLinks_Size")));
 			Contents = Size.size();
 			int Invoice = 0;
@@ -165,7 +195,7 @@ public class HomePage extends TestBase {
 				if (Text.equalsIgnoreCase("Invoices")) {
 					Invoice = 1;
 					clickMutipleParameters("HomePage_NavigationWidgetLink1", j, "HomePage_NavigationWidgetLink2");
-					
+					Wait("AllAccounts_Xpath");
 					// Validate Account selected on home page at Transaction  page
 					AccountSelected = GetText("AllAccounts_SelectedAccount");
 					Assert.assertEquals(Account, AccountSelected, "Account selected from drop down " + Account+ " is not displayed in account switcher at Transactions page");
@@ -175,7 +205,7 @@ public class HomePage extends TestBase {
 			}
 
 			Assert.assertEquals(Invoice, Invoice == 0, " 'Invoices' widged is not there for user " + SinglePayerMultiAccount + " on home page");
-				
+		*/		
 
 		} catch (Exception e) {
 			
@@ -186,8 +216,9 @@ public class HomePage extends TestBase {
 	
 	//Cards Page
 	
-	public CardsPage Home() throws InterruptedException{
-		HomePage_CardsLink.click();
+	public static CardsPage Home() throws InterruptedException{
+		click("ShellMenu_Xpath");
+		click("Cards_Xpath");
 		Thread.sleep(20000);
 		String URL=GetCurrentURL();
 		if(URL.equals(prop.getProperty("CardList_URL"))) {

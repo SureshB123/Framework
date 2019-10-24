@@ -112,7 +112,7 @@ public class TestBase {
 			    }
 	}
 	
-	public String GetCurrentURL() {
+	public static String GetCurrentURL() {
 		String CurrentURL=driver.getCurrentUrl();
 		return CurrentURL;
 	}
@@ -590,7 +590,7 @@ public class TestBase {
 
 	// Getting Text, it will return text
 
-	public String GetText(String Xpath1) {
+	public static String GetText(String Xpath1) {
 		WebElement Element = null;
 		int timeout = 17;
 		String Result = "";
@@ -598,28 +598,10 @@ public class TestBase {
 			WebDriverWait wait = new WebDriverWait(driver, timeout);
 			Element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(prop.getProperty(Xpath1))));
 			Result = Element.getText();
-			extentTest.log(LogStatus.INFO, "Text is : " + Result + " from Xpath: " + Xpath1);
-			System.out.println("Text is : " + Result + " from Xpath: " + Xpath1);
-			TakeScreenshot();
 		} catch (Exception e) {
-			if (e.toString().contains("stale element reference")
-					|| e.toString().contains("element is not attached to the page")
-					|| e.toString().contains("is not clickable") || e.toString().contains("Unable to locate element")) {
-				try {
-					Thread.sleep(12000);
-				} catch (InterruptedException e1) {
-					e1.printStackTrace();
-				}
-				extentTest.log(LogStatus.INFO, "Unable to get the text from Xpath: " + Xpath1 + ", trying once again");
-				Result = Element.getText();
-			} else {
-				extentTest.log(LogStatus.FAIL, "Unable to get Text from Xpath " + Xpath1);
-				TakeScreenshot();
-				extentTest.log(LogStatus.INFO, e.getMessage());
-				System.out.println("Unable to get Text from Xpath " + Result);
-				e.printStackTrace();
-
-			}
+				
+			Assert.assertEquals(Result, Result!="", "Unable to get Text from Xpath " + Xpath1);
+	
 		}
 		return Result;
 
@@ -655,19 +637,15 @@ public class TestBase {
 	}
 
 	// Go to URL
-	public void GoToURL(String URL) {
+	public static void GoToURL(String URL) {
+		String url = "";
 		try {
-			extentTest.log(LogStatus.INFO, "Navigating to " + prop.getProperty(URL));
-			driver.navigate().to(prop.getProperty(URL));
-			// Thread.sleep(2000);
-			extentTest.log(LogStatus.INFO, "Navigated to " + prop.getProperty(URL));
-			TakeScreenshot();
+			driver.get(prop.getProperty(URL));
+			url=driver.getCurrentUrl();
 		} catch (Exception e) {
-			extentTest.log(LogStatus.FAIL, "Unable to navigate to " + prop.getProperty(URL));
-			TakeScreenshot();
-			extentTest.log(LogStatus.INFO, e.getMessage());
-			System.out.println("Unable to navigate to " + prop.getProperty(URL));
-			e.printStackTrace();
+			
+			Assert.assertEquals(url, URL,"Unable to navigate to URL: " + URL);
+			
 		}
 
 	}
@@ -700,7 +678,7 @@ public class TestBase {
 
 	// Intersticial Page
 
-	public void IntersticialPage(String UserMang_Intersticial_FirstAccount) throws InterruptedException {
+	public static void IntersticialPage(String UserMang_Intersticial_FirstAccount) throws InterruptedException {
 		if ((driver.getTitle().contains("Interstitial"))) {
 			List<WebElement> Size = driver.findElements(By.xpath(prop.getProperty("Interstitial_CompanySize")));
 			int Count = Size.size();
@@ -785,7 +763,7 @@ public class TestBase {
 		// act.moveToElement(To).moveByOffset(960, 420).build().perform();
 	}
 
-	public void clickMutipleParameters(String Xpath1, int i, String Xpath2) {
+	public static void clickMutipleParameters(String Xpath1, int i, String Xpath2) {
 		WebElement Element = null;
 		int timeout = 70;
 		try {
@@ -1041,7 +1019,7 @@ public class TestBase {
 		}
 	}
 
-	public String GetTextMutipleParameters(String Xpath1, int i, String Xpath2) {
+	public static String GetTextMutipleParameters(String Xpath1, int i, String Xpath2) {
 		WebElement Element = null;
 		int timeout = 20;
 		String Result = "";
@@ -1050,30 +1028,12 @@ public class TestBase {
 			Element = wait.until(ExpectedConditions
 					.visibilityOfElementLocated(By.xpath(prop.getProperty(Xpath1) + i + prop.getProperty(Xpath2))));
 			Result = Element.getText();
-			extentTest.log(LogStatus.INFO, "Text is : " + Result);
-			System.out.println("Text is : " + Result);
-			TakeScreenshot();
-
+			
 		} catch (Exception e) {
-			if (e.toString().contains("stale element reference")
-					|| e.toString().contains("element is not attached to the page")
-					|| e.toString().contains("is not clickable") || e.toString().contains("Unable to locate element")) {
-				try {
-					Thread.sleep(5000);
-				} catch (InterruptedException e1) {
-					e1.printStackTrace();
-				}
-				extentTest.log(LogStatus.INFO,
-						"Unable to get the text from Xpath: " + Xpath1 + i + Xpath2 + ", trying once again");
-				Result = Element.getText();
-			} else {
-				extentTest.log(LogStatus.FAIL, "Unable to get Text from Xpath: " + Xpath1 + i + Xpath2);
-				TakeScreenshot();
-				extentTest.log(LogStatus.INFO, e.getMessage());
-				System.out.println("Unable to get Text from Xpath: " + Xpath1 + i + Xpath2);
-				e.printStackTrace();
+			
+				Assert.assertEquals(Result, Result!="",  "Unable to get Text from Xpath: " + Xpath1 + i + Xpath2);
 
-			}
+			
 		}
 		return Result;
 
@@ -1137,37 +1097,17 @@ public class TestBase {
 
 	// EnterText
 
-	public void EnterText(String Xpath, String Text) {
+	public static void EnterText(String Xpath, String Text) {
 		WebElement Element = null;
 		int timeout = 17;
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, timeout);
 			Element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(prop.getProperty(Xpath))));
-			extentTest.log(LogStatus.INFO, "Entering " + Text + " in " + Xpath);
 			ClearText(Xpath);
 			Element.sendKeys(Text);
-			extentTest.log(LogStatus.INFO, "Entering " + Text + " in " + Xpath);
-			TakeScreenshot();
 
 		} catch (Exception e) {
-			if (e.toString().contains("stale element reference")
-					|| e.toString().contains("element is not attached to the page")
-					|| e.toString().contains("is not clickable") || e.toString().contains("Unable to locate element")) {
-				try {
-					Thread.sleep(7000);
-				} catch (InterruptedException e1) {
-					e1.printStackTrace();
-				}
-
-				extentTest.log(LogStatus.INFO, "Unable to enter " + Text + " in " + Xpath + ", trying once again");
-				Element.sendKeys(Text);
-			} else {
-				extentTest.log(LogStatus.FAIL, "Unable to enter text in " + Xpath);
-				TakeScreenshot();
-				extentTest.log(LogStatus.INFO, e.getMessage());
-				System.out.println("Unable to enter text in " + Xpath);
-				e.printStackTrace();
-			}
+				Assert.fail("Unable to enter text in " + Xpath);
 
 		}
 	}
@@ -1210,21 +1150,17 @@ public class TestBase {
 
 	// ClearText
 
-	public void ClearText(String Xpath) {
+	public static void ClearText(String Xpath) {
 		WebElement Element = null;
 		int timeout = 17;
 		try {
-			extentTest.log(LogStatus.INFO, "Clearing Text: " + Xpath);
 			WebDriverWait wait = new WebDriverWait(driver, timeout);
 			Element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(prop.getProperty(Xpath))));
 			Element.clear();
-			TakeScreenshot();
+			
 		} catch (Exception e) {
-			extentTest.log(LogStatus.FAIL, "Unable to clear text from " + Xpath);
-			TakeScreenshot();
-			extentTest.log(LogStatus.INFO, e.getMessage());
-			System.out.println("Unable to Clear Text from " + Xpath);
-			e.printStackTrace();
+			
+			Assert.fail("Unable to clear text from " + Xpath);
 		}
 	}
 
@@ -1358,17 +1294,14 @@ public class TestBase {
 
 	// GetAttriMultiParameters
 
-	public String GetAttriMultiParameters(String Xpath1, String Xpath2, int i, String Attri) {
+	public static String GetAttriMultiParameters(String Xpath1, String Xpath2, int i, String Attri) {
 		String Attribute = "";
 		try {
 			WebElement Element = driver.findElement(By.xpath(prop.getProperty(Xpath1) + i + prop.getProperty(Xpath2)));
 			Attribute = Element.getAttribute(Attri);
 		} catch (Exception e) {
-			extentTest.log(LogStatus.FAIL, "Unable to get the attribute from " + Xpath1 + i + Xpath2);
-			extentTest.log(LogStatus.INFO, e.getMessage());
-			System.out.println("Unable to get the attribute from " + Xpath1 + i + Xpath2);
-			e.printStackTrace();
-			return null;
+			Assert.assertEquals(Attribute, Attribute!="", "Unable to get the attribute from " + Xpath1 + i + Xpath2);
+			
 		}
 		return Attribute;
 	}
@@ -1510,7 +1443,7 @@ public class TestBase {
 
 	// IsDisplayed(For Validation- Irrespective of PASS/FAIL)
 
-	public boolean IsDisplayed(String locatorkey) {
+	public static boolean IsDisplayed(String locatorkey) {
 		WebElement Element = null;
 		int timeout = 5;
 		try {
@@ -1755,11 +1688,10 @@ public class TestBase {
 			Thread.sleep(2000);
 			WebDriverWait wait = new WebDriverWait(driver, timeout);
 			Element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(prop.getProperty(Locator))));
-			extentTest.log(LogStatus.INFO, Locator + " is displayed");
-			System.out.println(Locator + " is displayed");
 		} catch (Exception e) {
-			extentTest.log(LogStatus.INFO, Locator + " is not displayed");
-			System.out.println(Locator + " is not displayed");
+			
+			Assert.fail( Locator + " is not displayed");
+			
 
 		}
 	}
@@ -1810,7 +1742,7 @@ public class TestBase {
 
 	// Refresh
 
-	public void Refresh() {
+	public static void Refresh() {
 		driver.navigate().refresh();
 
 	}
@@ -2345,15 +2277,15 @@ public class TestBase {
 
 	// Login to account
 
-	public void LoginToAccount(String AccountWithSetasDefault) throws InterruptedException {
+	public static void LoginToAccount(String LoginUser) throws InterruptedException {
 		GoToURL("URL");
 		String URL = driver.getCurrentUrl();
 		if (URL.contains("scolnextgenpprd")) {
-			EnterText("Janrein_SignIn_EmailID", AccountWithSetasDefault);
+			EnterText("Janrein_SignIn_EmailID", LoginUser);
 			EnterText("Janrein_Password", prop.getProperty("Password_WithJanrain"));
 			click("Janrein_SignInButton");
 		} else {
-			EnterText("UserName_Xpath", AccountWithSetasDefault);
+			EnterText("UserName_Xpath", LoginUser);
 			EnterText("Password_Xpath", prop.getProperty("Password_WithOutJanrain"));
 			Thread.sleep(2000);
 			click("LoginButton");
