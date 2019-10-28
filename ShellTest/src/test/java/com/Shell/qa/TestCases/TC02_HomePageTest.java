@@ -44,9 +44,9 @@ public class TC02_HomePageTest extends TestBase {
 	}
 	
 	@Parameters({ "browser" })
-	@BeforeMethod
-	public void SetUp(String browser) throws InterruptedException {
-		initialization(browser);
+	@BeforeMethod()
+	public void SetUp(String brows) throws InterruptedException {
+		initialization(brows);
 		loginPage=new LoginPage();
 		homePage=loginPage.Login(prop.getProperty("username"), prop.getProperty("password"));
 				
