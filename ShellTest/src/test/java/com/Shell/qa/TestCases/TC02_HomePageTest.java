@@ -10,6 +10,7 @@ import org.testng.SkipException;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.Shell.qa.Base.TestBase;
 import com.Shell.qa.Pages.CardsPage;
@@ -42,9 +43,10 @@ public class TC02_HomePageTest extends TestBase {
 		}
 	}
 	
+	@Parameters({ "browser" })
 	@BeforeMethod
-	public void SetUp() throws InterruptedException {
-		initialization();
+	public void SetUp(String browser) throws InterruptedException {
+		initialization(browser);
 		loginPage=new LoginPage();
 		homePage=loginPage.Login(prop.getProperty("username"), prop.getProperty("password"));
 				

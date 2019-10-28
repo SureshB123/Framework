@@ -6,6 +6,7 @@ import org.testng.SkipException;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.Shell.qa.Base.TestBase;
 import com.Shell.qa.Pages.HomePage;
@@ -37,9 +38,12 @@ public class TC01_LoginPageTest extends TestBase {
 		}
 	}
 	
+	
+	@Parameters({ "browser" })
 	@BeforeMethod
-	public void SetUp() {
-		initialization();
+	
+	public void SetUp(String brows) {
+		initialization(brows);
 		loginPage=new LoginPage();
 		
 			
@@ -65,7 +69,6 @@ public class TC01_LoginPageTest extends TestBase {
 	
 	public void LoginTest(Hashtable<String, String> data) throws InterruptedException {
 		extentTest=extent.startTest("LoginTest");
-		//homePage=loginPage.Login(prop.getProperty("username"), prop.getProperty("password"));
 		homePage=loginPage.Login(data.get("UserName"),data.get("Password"));
 		if(!(homePage instanceof HomePage)){
 			Assert.fail("Unsuccessful to move to Home Page");

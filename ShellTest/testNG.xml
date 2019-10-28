@@ -9,6 +9,7 @@
 	
 	<test name="TC01_LoginPageTest" allow-return-values="true">
 		<classes>
+			<parameter name="browser" value="Mozilla"/>
 			<class name="com.Shell.qa.TestCases.TC01_LoginPageTest" />
 		</classes>
 	</test>

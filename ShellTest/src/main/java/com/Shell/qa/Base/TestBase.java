@@ -85,19 +85,19 @@ public class TestBase {
 	
 	//Driver Initialization
 	
-	public static void initialization() {
+	public static void initialization(String browserName) {
 		
 		
-		String browserName=prop.getProperty("browser");
+		//String browserName="";
 		try{
 			
 			  if(browserName.equals("Mozilla")){
 				  		System.setProperty("webdriver.gecko.driver",System.getProperty("user.dir")+"\\Drivers\\geckodriver.exe");
 			    		driver= new FirefoxDriver();
-			  }else if(browserName.equals("chrome")){
+			  }else if(browserName.equals("Chrome")){
 						System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"\\Drivers\\chromedriver.exe");
 						driver= new ChromeDriver();
-			  }else if(browserName.equals("ie")){
+			  }else if(browserName.equals("IE")){
 						System.setProperty("webdriver.ie.driver",System.getProperty("user.dir")+"\\Drivers\\msedgedriver.exe");
 						driver = new InternetExplorerDriver();
 			  }
