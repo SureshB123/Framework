@@ -48,7 +48,7 @@ public class TC02_HomePageTest extends TestBase {
 	public void SetUp(String brows) throws InterruptedException {
 		initialization(brows);
 		loginPage=new LoginPage();
-		homePage=loginPage.Login(prop.getProperty("username"), prop.getProperty("password"));
+		homePage=LoginPage.Login(prop.getProperty("username"), prop.getProperty("password"));
 				
 	}
 	
@@ -68,7 +68,7 @@ public class TC02_HomePageTest extends TestBase {
 	
 	public void TC82953_TC82954(Hashtable<String, String> data){
 		extentTest=extent.startTest("TC82953_TC82954");
-		homePage.TC82953_TC82954(data.get("SinglePayerMultiAccount"));
+		HomePage.TC82953_TC82954(data.get("SinglePayerMultiAccount"));
 		
 	
 	}
@@ -79,7 +79,7 @@ public class TC02_HomePageTest extends TestBase {
 	
 	public void HomeTest() throws InterruptedException {
 		extentTest=extent.startTest("HomeTest");
-		cardsPage=homePage.Home();
+		cardsPage=HomePage.Home();
 		if(!(cardsPage instanceof CardsPage)){
 			Assert.fail("On clicking cards from home page, unsuccessful to move to Cards Page");
 		}
