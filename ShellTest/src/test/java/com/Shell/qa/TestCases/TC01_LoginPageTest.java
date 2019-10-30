@@ -42,8 +42,8 @@ public class TC01_LoginPageTest extends TestBase {
 	@Parameters({ "browser" })
 	@BeforeMethod
 	
-	public void SetUp(String brows) {
-		initialization(brows);
+	public void SetUp(String browser) {
+		initialization(browser);
 		loginPage=new LoginPage();
 		
 			

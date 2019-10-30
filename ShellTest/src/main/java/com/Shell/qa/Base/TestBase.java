@@ -19,6 +19,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -40,6 +41,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+
 import com.Shell.qa.Utility.POMXls_Reader;
 import com.Shell.qa.Utility.TestUtil;
 import com.relevantcodes.extentreports.DisplayOrder;
@@ -64,6 +66,10 @@ public class TestBase {
 	
 	public String Excel_path=System.getProperty("user.dir")+"//src//main//java//com//Shell//qa//TestData//POMTestDataSheet.xlsx";
 	
+	//Initializing Logger
+	
+	public static Logger log=Logger.getLogger(TestBase.class);
+	
 	//Constructor of Base Test
 	
 	public TestBase() {
@@ -74,6 +80,7 @@ public class TestBase {
 			prop.load(fis);
 			
 			xls= new POMXls_Reader(Excel_path);
+			
 			
 			}catch(Exception e){
 				e.printStackTrace();
@@ -94,12 +101,15 @@ public class TestBase {
 			  if(browserName.equals("Mozilla")){
 				  		System.setProperty("webdriver.gecko.driver",System.getProperty("user.dir")+"\\Drivers\\geckodriver.exe");
 			    		driver= new FirefoxDriver();
+			    		log.info("Launching Mozilla browser");
 			  }else if(browserName.equals("Chrome")){
 						System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"\\Drivers\\chromedriver.exe");
 						driver= new ChromeDriver();
+						log.info("Launching Chrome browser");
 			  }else if(browserName.equals("IE")){
 						System.setProperty("webdriver.ie.driver",System.getProperty("user.dir")+"\\Drivers\\msedgedriver.exe");
 						driver = new InternetExplorerDriver();
+						log.info("Launching IE browser");
 			  }
 					driver.manage().window().maximize();
 					driver.manage().deleteAllCookies();
@@ -107,13 +117,16 @@ public class TestBase {
 					driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_Wait, TimeUnit.SECONDS);
 					driver.get(prop.getProperty("url"));
 			    }catch(Exception e){
-			    		System.out.println("Unable to find browser and open it");
+			    		log.info("Unable to launch browser: "+browserName+ "and go to URL: "+prop.getProperty("url"));
+			    		Assert.fail("Unable to launch browser: "+browserName+ "and go to URL: "+prop.getProperty("url"));
 			    		e.printStackTrace();
 			    }
 	}
 	
 	public static String GetCurrentURL() {
+		
 		String CurrentURL=driver.getCurrentUrl();
+		log.info("Current URL: "+CurrentURL);
 		return CurrentURL;
 	}
 	
@@ -598,10 +611,10 @@ public class TestBase {
 			WebDriverWait wait = new WebDriverWait(driver, timeout);
 			Element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(prop.getProperty(Xpath1))));
 			Result = Element.getText();
+			log.info("Getting Text from: "+Xpath1);
 		} catch (Exception e) {
-				
+			log.info("Unable to get Text from Xpath " + Xpath1);
 			Assert.assertEquals(Result, Result!="", "Unable to get Text from Xpath " + Xpath1);
-	
 		}
 		return Result;
 
@@ -721,6 +734,7 @@ public class TestBase {
 			wait = new WebDriverWait(driver, timeout);
 			Element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(prop.getProperty(Xpath))));
 			ScrollToElement(Xpath);
+			log.info("Clicking : "+Xpath);
 			Element.click();
 
 		} catch (Exception e) {
@@ -731,6 +745,7 @@ public class TestBase {
 				ScrollToElement(Xpath);
 				Element.click();
 			} catch (InterruptedException e1) {
+				log.info("Unable to Click : "+Xpath);
 				Assert.fail("Unable to click " + Xpath);
 				
 			}
@@ -1104,9 +1119,11 @@ public class TestBase {
 			WebDriverWait wait = new WebDriverWait(driver, timeout);
 			Element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(prop.getProperty(Xpath))));
 			ClearText(Xpath);
+			log.info("Entering Text : "+Text+" in "+Xpath);
 			Element.sendKeys(Text);
 
 		} catch (Exception e) {
+				log.info("Unable to enter Text : "+Text+" in "+Xpath);
 				Assert.fail("Unable to enter text in " + Xpath);
 
 		}
@@ -1115,21 +1132,18 @@ public class TestBase {
 	// EnterText Multiple Parameters
 
 	public void EnterTextMultipleParameters(String Property1, String Property2, int i, String Text) {
+		WebElement Element = null;
+		int timeout = 30;
 		try {
-			extentTest.log(LogStatus.INFO, "Entering Text at " + Property1 + i + Property2);
-			WebElement Element;
-			WebDriverWait wait = new WebDriverWait(driver, 30);
+			WebDriverWait wait = new WebDriverWait(driver, timeout);
 			Element = wait.until(ExpectedConditions.visibilityOf(
 					driver.findElement(By.xpath(prop.getProperty(Property1) + i + prop.getProperty(Property2)))));
+			log.info("Entering Text "+Text+" in: "+Property1+i+Property2);
 			Element.sendKeys(Text);
-			extentTest.log(LogStatus.INFO, "Entered Text " + Text + " at Xpath: " + Property1 + i + Property2);
-			TakeScreenshot();
+			
 		} catch (Exception e) {
-			extentTest.log(LogStatus.FAIL, "Unable to enter text: " + Text + " at Xpath: " + Property1 + i + Property2);
-			TakeScreenshot();
-			extentTest.log(LogStatus.INFO, e.getMessage());
-			System.out.println("Unable to enter Text: " + Text + " at Xpath: " + Property1 + i + Property2);
-			e.printStackTrace();
+			log.info("Unable to enter Text "+Text+" in: "+Property1+i+Property2);
+			Assert.fail("Unable to enter Text "+Text+" in: "+Property1+i+Property2);
 		}
 	}
 
@@ -1137,14 +1151,11 @@ public class TestBase {
 
 	public void SwitchtoFrame(String Frame) {
 		try {
-			extentTest.log(LogStatus.INFO, "Switching to frame " + Frame);
+			log.info("Switching to Frame: "+Frame);
 			driver.switchTo().frame(Frame);
-			extentTest.log(LogStatus.INFO, "Switched to frame " + Frame);
-			TakeScreenshot();
 		} catch (Exception e) {
-			extentTest.log(LogStatus.FAIL, "Unable to switch to frame: " + Frame);
-			TakeScreenshot();
-			e.printStackTrace();
+			log.info("Unable to switch to Frame: "+Frame);
+			Assert.fail("Unable to switch to Frame: "+Frame);
 		}
 	}
 
@@ -1156,10 +1167,11 @@ public class TestBase {
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, timeout);
 			Element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(prop.getProperty(Xpath))));
+			log.info("Clearing Text from: "+Xpath);
 			Element.clear();
 			
 		} catch (Exception e) {
-			
+			log.info("Unable to clear text from: "+Xpath);
 			Assert.fail("Unable to clear text from " + Xpath);
 		}
 	}
@@ -1209,29 +1221,19 @@ public class TestBase {
 
 	public void popup(String Value) {
 		try {
-			extentTest.log(LogStatus.INFO, "Handling Popup");
-			// Switching to Alert
 			Alert alert = driver.switchTo().alert();
-			// Capturing alert message.
-			/*
-			 * String alertMessage= driver.switchTo().alert().getText(); // Displaying alert
-			 * message System.out.println(alertMessage); // Accepting alert
-			 * if(Value.equalsIgnoreCase("YES")) {
-			 */
 			alert.accept();
-			/*
-			 * }else if(Value.equalsIgnoreCase("NO")) { alert.dismiss();
-			 */
 
 		} catch (Exception e) {
-			extentTest.log(LogStatus.FAIL, "Unable to handle Popup");
-			TakeScreenshot();
+			log.info("Unable to handle popup: "+Value);
+			Assert.fail("Unable to handle popup: "+Value);
 
 		}
 	}
 
 	// Quit
 	public void Quit() {
+		
 		driver.quit();
 	}
 
@@ -1239,36 +1241,32 @@ public class TestBase {
 
 	public String GetTextAttribute(String Xpath) {
 		try {
-			extentTest.log(LogStatus.INFO, "Getting Text for " + Xpath);
 			WebElement Value = driver.findElement(By.xpath(prop.getProperty(Xpath)));
 			String Text = Value.getAttribute("value");
-			TakeScreenshot();
+			log.info("Getting the attribute from : "+Xpath);
 			return Text;
 		} catch (Exception e) {
-			extentTest.log(LogStatus.FAIL, "Unable to get text for  " + Xpath);
-			TakeScreenshot();
-			extentTest.log(LogStatus.INFO, e.getMessage());
-			System.out.println("Unable to enter Text");
-			e.printStackTrace();
+			log.info("Unable to get the attribute from : "+Xpath);
+			Assert.fail("Unable to get the attribute from : "+Xpath);
 			return null;
+			
 		}
 	}
 
 	// GetTextAttribute--------It will get text from editable text field
 
 	public String GetAttribute(String Xpath, String Value) {
+		WebElement Element = null;
+		int timeout = 17;
 		try {
-			extentTest.log(LogStatus.INFO, "Getting Text for " + Xpath);
-			WebElement Element = driver.findElement(By.xpath(prop.getProperty(Xpath)));
+			WebDriverWait wait = new WebDriverWait(driver, timeout);
+			Element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(prop.getProperty(Xpath))));
+			log.info("Getting Attribute "+Value+" from "+Xpath);
 			String Text = Element.getAttribute(Value);
-			TakeScreenshot();
 			return Text;
 		} catch (Exception e) {
-			extentTest.log(LogStatus.FAIL, "Unable to get text for  " + Xpath);
-			TakeScreenshot();
-			extentTest.log(LogStatus.INFO, e.getMessage());
-			System.out.println("Unable to enter Text");
-			e.printStackTrace();
+			log.info("Unable to get Attribute: "+Value+", from "+Xpath);
+			Assert.fail("Getting Attribute: "+Value+", from "+Xpath);
 			return null;
 		}
 	}
